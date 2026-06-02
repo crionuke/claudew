@@ -1,6 +1,6 @@
 # CLAUDEW
 
-Dockerized Claude Code workers. Two isolated workspaces (`a`, `b`) so two Claude sessions can work in parallel without stepping on each other.
+Dockerized Claude Code workers. Three isolated workspaces (`a`, `b`, `c`) so multiple Claude sessions can work in parallel without stepping on each other.
 
 Each worker runs Claude with `--dangerously-skip-permissions` inside a container — full autonomy on tool calls, no permission prompts, and no way for it to touch the host beyond the mounted workspace directory.
 
@@ -37,6 +37,7 @@ Each worker runs Claude with `--dangerously-skip-permissions` inside a container
 ```bash
 ./claudew_a.sh        # start worker A, attach to Claude
 ./claudew_b.sh        # start worker B, attach to Claude
+./claudew_c.sh        # start worker C, attach to Claude
 ```
 
 Each script builds the image if needed, brings up the container, and execs into `claude`. Anything after the script name is forwarded to `claude`:
@@ -45,7 +46,7 @@ Each script builds the image if needed, brings up the container, and execs into 
 ./claudew_a.sh -p "fix the failing test"
 ```
 
-Files live on the host under `./workspace_a` and `./workspace_b` — edit from your IDE, Claude sees the changes immediately.
+Files live on the host under `./workspace_a`, `./workspace_b`, and `./workspace_c` — edit from your IDE, Claude sees the changes immediately.
 
 ## Skills
 

@@ -28,3 +28,11 @@ services:
     volumes:
       - ./workspace_b:/home/claudew
       - /var/run/docker.sock:/var/run/docker.sock
+
+  claudew_c:
+    <<: *claudew
+    container_name: claudew_c
+    hostname: claudew_c
+    volumes:
+      - ./workspace_c:/home/claudew
+      - /var/run/docker.sock:/var/run/docker.sock
