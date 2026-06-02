@@ -1,2 +1,3 @@
-# claudew
-Local claude worker in docker
+# CLAUDEW
+
+My local claude workers in docker

@@ -1,0 +1,30 @@
+x-claudew: &claudew
+  build:
+    context: .
+    dockerfile: docker/Dockerfile
+    args:
+      GIT_USER_NAME: ${GIT_USER_NAME}
+      GIT_USER_EMAIL: ${GIT_USER_EMAIL}
+  stdin_open: true
+  tty: true
+  working_dir: /home/claudew
+  environment:
+    GH_TOKEN: ${GH_TOKEN}
+    CONTEXT7_API_KEY: ${CONTEXT7_API_KEY}
+
+services:
+  claudew_a:
+    <<: *claudew
+    container_name: claudew_a
+    hostname: claudew_a
+    volumes:
+      - ./workspace_a:/home/claudew
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  claudew_b:
+    <<: *claudew
+    container_name: claudew_b
+    hostname: claudew_b
+    volumes:
+      - ./workspace_b:/home/claudew
+      - /var/run/docker.sock:/var/run/docker.sock
