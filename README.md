@@ -1,6 +1,6 @@
 # CLAUDEW
 
-Dockerized Claude Code workers. Three isolated workspaces (`a`, `b`, `c`) so multiple Claude sessions can work in parallel without stepping on each other.
+Dockerized Claude Code workers. Three isolated workspaces (`r`, `g`, `b`) so multiple Claude sessions can work in parallel without stepping on each other.
 
 Each worker runs Claude with `--dangerously-skip-permissions` inside a container — full autonomy on tool calls, no permission prompts, and no way for it to touch the host beyond the mounted workspace directory.
 
@@ -8,12 +8,12 @@ Each worker runs Claude with `--dangerously-skip-permissions` inside a container
 
 **One-shot with `-p`** — hand off a task and walk away:
 
-- **Implement an issue** — `./claudew_a.sh -p "implement issue #32"` and let it churn through reads, edits, builds, and tests without me approving each step.
-- **Background PR babysitting** — point worker B at an open PR to watch CI, fix review comments, push fixes, and re-request review while A is doing something else.
+- **Implement an issue** — `./claudew_r.sh -p "implement issue #32"` and let it churn through reads, edits, builds, and tests without me approving each step.
+- **Background PR babysitting** — point worker G at an open PR to watch CI, fix review comments, push fixes, and re-request review while R is doing something else.
 
 **Interactive (no `-p`)** — sit in the REPL and iterate:
 
-- **Parallel tracks** — A on a feature branch, B on a bugfix or doc pass. Separate workspaces and SSH keys, no cross-contamination.
+- **Parallel tracks** — R on a feature branch, G on a bugfix or doc pass. Separate workspaces and SSH keys, no cross-contamination.
 - **Throwaway experiments** — try a risky refactor or a sketchy script in a container; if it goes sideways, nuke the workspace dir, host is untouched.
 
 ## What's inside
@@ -35,18 +35,18 @@ Each worker runs Claude with `--dangerously-skip-permissions` inside a container
 ## Use
 
 ```bash
-./claudew_a.sh        # start worker A, attach to Claude
-./claudew_b.sh        # start worker B, attach to Claude
-./claudew_c.sh        # start worker C, attach to Claude
+./claudew_r.sh        # start worker R (red), attach to Claude
+./claudew_g.sh        # start worker G (green), attach to Claude
+./claudew_b.sh        # start worker B (blue), attach to Claude
 ```
 
 Each script builds the image if needed, brings up the container, and execs into `claude`. Anything after the script name is forwarded to `claude`:
 
 ```bash
-./claudew_a.sh -p "fix the failing test"
+./claudew_r.sh -p "fix the failing test"
 ```
 
-Files live on the host under `./workspace_a`, `./workspace_b`, and `./workspace_c` — edit from your IDE, Claude sees the changes immediately.
+Files live on the host under `./workspace_r`, `./workspace_g`, and `./workspace_b` — edit from your IDE, Claude sees the changes immediately.
 
 ## Skills
 

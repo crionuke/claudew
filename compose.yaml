@@ -13,12 +13,20 @@ x-claudew: &claudew
     CONTEXT7_API_KEY: ${CONTEXT7_API_KEY}
 
 services:
-  claudew_a:
+  claudew_r:
     <<: *claudew
-    container_name: claudew_a
-    hostname: claudew_a
+    container_name: claudew_r
+    hostname: claudew_r
     volumes:
-      - ./workspace_a:/home/claudew
+      - ./workspace_r:/home/claudew
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  claudew_g:
+    <<: *claudew
+    container_name: claudew_g
+    hostname: claudew_g
+    volumes:
+      - ./workspace_g:/home/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
   claudew_b:
@@ -27,12 +35,4 @@ services:
     hostname: claudew_b
     volumes:
       - ./workspace_b:/home/claudew
-      - /var/run/docker.sock:/var/run/docker.sock
-
-  claudew_c:
-    <<: *claudew
-    container_name: claudew_c
-    hostname: claudew_c
-    volumes:
-      - ./workspace_c:/home/claudew
       - /var/run/docker.sock:/var/run/docker.sock
