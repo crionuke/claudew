@@ -6,8 +6,13 @@ Each worker runs Claude with `--dangerously-skip-permissions` inside a container
 
 ## How I use it
 
-- **Fire-and-forget issue work** — `./claudew_a.sh -p "implement issue #32"` and let it churn through reads, edits, builds, and tests without me approving each step.
+**One-shot with `-p`** — hand off a task and walk away:
+
+- **Implement an issue** — `./claudew_a.sh -p "implement issue #32"` and let it churn through reads, edits, builds, and tests without me approving each step.
 - **Background PR babysitting** — point worker B at an open PR to watch CI, fix review comments, push fixes, and re-request review while A is doing something else.
+
+**Interactive (no `-p`)** — sit in the REPL and iterate:
+
 - **Parallel tracks** — A on a feature branch, B on a bugfix or doc pass. Separate workspaces and SSH keys, no cross-contamination.
 - **Throwaway experiments** — try a risky refactor or a sketchy script in a container; if it goes sideways, nuke the workspace dir, host is untouched.
 
