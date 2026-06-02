@@ -19,6 +19,9 @@ if [ ! -f "$HOME/.gitconfig" ]; then
     git config --global init.defaultBranch main
 fi
 
+# Workspace dir — where Claude sessions are rooted
+mkdir -p "$HOME/workspace"
+
 # Copy baked-in project skills into ~/.claude/skills, refreshed on every start.
 # Only the baked-in names are touched — user-created skills with other names survive.
 SKILLS_SRC=/opt/claudew/skills
