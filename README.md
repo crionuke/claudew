@@ -48,6 +48,14 @@ Each script builds the image if needed, brings up the container, and execs into 
 
 Files live on the host under `./workspace_r`, `./workspace_g`, and `./workspace_b` — edit from your IDE, Claude sees the changes immediately.
 
+### All three at once (iTerm2)
+
+```bash
+./iterm.sh
+```
+
+Opens a new iTerm2 tab split into three vertical panes — R and B narrow on the sides (~17.5% each), G wide in the middle (~65%) — each pane running its worker. Tab/cursor/background colors and titles are set per worker so it's obvious which is which.
+
 ## Skills
 
 Drop a skill directory under `./skills/<name>/` and restart the container. The entrypoint refreshes baked-in skills on every start; user-created skills with other names are left alone.
