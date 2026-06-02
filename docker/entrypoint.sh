@@ -22,6 +22,13 @@ fi
 # Workspace dir — where Claude sessions are rooted
 mkdir -p "$HOME/workspace"
 
+# Global workspace config (CLAUDE.md, etc.) — refreshed on every start so the
+# mounted ./config dir on the host stays the source of truth.
+CONFIG_SRC=/opt/claudew/config
+if [ -d "$CONFIG_SRC" ]; then
+    cp -af "$CONFIG_SRC"/. "$HOME/workspace/"
+fi
+
 # Copy baked-in project skills into ~/.claude/skills, refreshed on every start.
 # Only the baked-in names are touched — user-created skills with other names survive.
 SKILLS_SRC=/opt/claudew/skills
