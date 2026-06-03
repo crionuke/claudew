@@ -12,4 +12,4 @@ printf '\033]1337;SetUserVar=CLAUDEW=%s\007' "$(printf B | base64)"
 trap 'printf "\033]1337;SetColors=tab=\007\033]1337;SetColors=cursor=\007\033]1337;SetColors=bg=\007\033]0;\007\033]1337;SetUserVar=CLAUDEW=\007"' EXIT
 
 docker compose up -d --build claudew_b
-docker compose exec claudew_b claudew "$@"
+docker compose exec -w /home/claudew/workspace claudew_b bash -l
