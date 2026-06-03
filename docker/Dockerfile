@@ -90,9 +90,12 @@ ENV PATH=$JAVA_HOME/bin:$QUARKUS_HOME/bin:$PATH
 # Project skills — symlinked into ~/.claude/skills by the entrypoint
 COPY --chown=claudew:claudew skills /opt/claudew/skills
 
+# Global workspace config (CLAUDE.md, etc.) — copied into ~/workspace by the entrypoint
+COPY --chown=claudew:claudew config /opt/claudew/config
+
 # Git identity — consumed by entrypoint to seed ~/.gitconfig and the SSH key on first run
-ARG GIT_USER_NAME="Kirill Byvshev"
-ARG GIT_USER_EMAIL="crionuke@gmail.com"
+ARG GIT_USER_NAME
+ARG GIT_USER_EMAIL
 ENV GIT_USER_NAME=$GIT_USER_NAME \
     GIT_USER_EMAIL=$GIT_USER_EMAIL
 

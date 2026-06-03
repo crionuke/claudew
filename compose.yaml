@@ -34,7 +34,6 @@ services:
     hostname: claudew_r
     volumes:
       - ./workspace_r:/home/claudew
-      - ./config:/opt/claudew/config:ro
 
   claudew_g:
     <<: *claudew
@@ -42,7 +41,6 @@ services:
     hostname: claudew_g
     volumes:
       - ./workspace_g:/home/claudew
-      - ./config:/opt/claudew/config:ro
 
   claudew_b:
     <<: *claudew
@@ -50,7 +48,6 @@ services:
     hostname: claudew_b
     volumes:
       - ./workspace_b:/home/claudew
-      - ./config:/opt/claudew/config:ro
 
 networks:
   network:

@@ -22,8 +22,7 @@ fi
 # Workspace dir — where Claude sessions are rooted
 mkdir -p "$HOME/workspace"
 
-# Global workspace config (CLAUDE.md, etc.) — refreshed on every start so the
-# mounted ./config dir on the host stays the source of truth.
+# Global workspace config (CLAUDE.md, etc.) — baked into the image, refreshed on every start.
 CONFIG_SRC=/opt/claudew/config
 if [ -d "$CONFIG_SRC" ]; then
     cp -af "$CONFIG_SRC"/. "$HOME/workspace/"
