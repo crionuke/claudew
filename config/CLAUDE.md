@@ -14,6 +14,9 @@ Applies to every repo under `~/workspace`. Per-repo `CLAUDE.md` wins on conflict
 `~/workspace/` holds multiple repos. `cd` into the right clone before any `gh` or `git` command. If the target repo is
 ambiguous, ask — never guess. From outside a clone, pass `--repo owner/name`. One repo per command.
 
+Clone into `~/workspace/<owner>/<repo>` mirroring the GitHub path (e.g. `OMGSERVERS/omgserver` →
+`~/workspace/OMGSERVERS/omgserver`).
+
 ## Branching and PRs
 
 1. Branch off the default — never commit to it directly.
