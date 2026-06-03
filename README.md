@@ -23,6 +23,8 @@ Three Dockerized Claude Code workers (`a`, `b`, `c`) running in parallel with `-
 ./claudew_c.sh   # blue
 ```
 
+Each opens a login bash session inside the worker, rooted at `~/workspace`. Run `claudew` to start Claude Code.
+
 Workspaces: `./workspace_a`, `./workspace_b`, `./workspace_c`.
 
 ### All three (iTerm2)
@@ -31,4 +33,4 @@ Workspaces: `./workspace_a`, `./workspace_b`, `./workspace_c`.
 ./iterm.sh
 ```
 
-Opens a tab split into three vertical panes (A | B | C), each running its worker.
+Opens a tab split into three vertical panes (A | B | C), each attached to its worker's bash session.
