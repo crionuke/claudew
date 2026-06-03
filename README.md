@@ -1,6 +1,6 @@
 # CLAUDEW
 
-Three Dockerized Claude Code workers (`r`, `g`, `b`) running in parallel with `--dangerously-skip-permissions`.
+Three Dockerized Claude Code workers (`a`, `b`, `c`) running in parallel with `--dangerously-skip-permissions`.
 
 ## Stack
 
@@ -18,12 +18,12 @@ Three Dockerized Claude Code workers (`r`, `g`, `b`) running in parallel with `-
 ## Run
 
 ```bash
-./claudew_r.sh   # red
-./claudew_g.sh   # green
-./claudew_b.sh   # blue
+./claudew_a.sh   # red
+./claudew_b.sh   # green
+./claudew_c.sh   # blue
 ```
 
-Workspaces: `./workspace_r`, `./workspace_g`, `./workspace_b`.
+Workspaces: `./workspace_a`, `./workspace_b`, `./workspace_c`.
 
 ### All three (iTerm2)
 
@@ -31,4 +31,4 @@ Workspaces: `./workspace_r`, `./workspace_g`, `./workspace_b`.
 ./iterm.sh
 ```
 
-Opens a tab split into three vertical panes (R | G | B), each running its worker.
+Opens a tab split into three vertical panes (A | B | C), each running its worker.

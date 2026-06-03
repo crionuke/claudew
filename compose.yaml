@@ -28,19 +28,12 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  claudew_r:
+  claudew_a:
     <<: *claudew
-    container_name: claudew_r
-    hostname: claudew_r
+    container_name: claudew_a
+    hostname: claudew_a
     volumes:
-      - ./workspace_r:/home/claudew
-
-  claudew_g:
-    <<: *claudew
-    container_name: claudew_g
-    hostname: claudew_g
-    volumes:
-      - ./workspace_g:/home/claudew
+      - ./workspace_a:/home/claudew
 
   claudew_b:
     <<: *claudew
@@ -48,6 +41,13 @@ services:
     hostname: claudew_b
     volumes:
       - ./workspace_b:/home/claudew
+
+  claudew_c:
+    <<: *claudew
+    container_name: claudew_c
+    hostname: claudew_c
+    volumes:
+      - ./workspace_c:/home/claudew
 
 networks:
   network:
