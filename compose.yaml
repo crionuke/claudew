@@ -1,3 +1,5 @@
+name: claudew
+
 x-claudew: &claudew
   build:
     context: .
@@ -8,11 +10,24 @@ x-claudew: &claudew
   stdin_open: true
   tty: true
   working_dir: /home/claudew
+  env_file:
+    - .env
   environment:
-    GH_TOKEN: ${GH_TOKEN}
-    CONTEXT7_API_KEY: ${CONTEXT7_API_KEY}
+    DOCKER_HOST: tcp://docker:2375
+  networks:
+    - network
 
 services:
+  docker:
+    image: alpine/socat
+    container_name: docker
+    command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
+    restart: unless-stopped
+    networks:
+      - network
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
   claudew_r:
     <<: *claudew
     container_name: claudew_r
@@ -36,3 +51,6 @@ services:
     volumes:
       - ./workspace_b:/home/claudew
       - ./config:/opt/claudew/config:ro
+
+networks:
+  network:

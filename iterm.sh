@@ -3,6 +3,8 @@ set -euo pipefail
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
+docker compose up -d --build
+
 osascript <<EOF
 tell application "iTerm2"
     activate
