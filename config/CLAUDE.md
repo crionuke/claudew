@@ -19,12 +19,12 @@ Clone into `~/workspace/<owner>/<repo>` mirroring the GitHub path (e.g. `OMGSERV
 
 ## Branching and PRs
 
-1. Before starting any new task, check out the default branch and pull remote changes.
-2. Branch off the default — never commit to it directly.
-3. Push and open a PR against the default branch with `gh pr create`, then enable squash auto-merge
+1. Branch off the default — never commit to it directly.
+2. Push and open a PR against the default branch with `gh pr create`, then enable squash auto-merge
    (`gh pr merge --squash --auto`).
-4. Monitor checks to completion (`gh pr checks --watch`); fix failures and address review comments. Never walk away.
-5. If asked to push to the default branch, do it and monitor its workflow runs the same way.
+3. Monitor checks to completion (`gh pr checks --watch`); fix failures and address review comments. Never walk away.
+4. If asked to push to the default branch, do it and monitor its workflow runs the same way.
+5. Once the PR is merged or the branch has been pushed, check out the default branch and pull remote changes.
     
 See `~/workspace/pull-requests.md`.
 
