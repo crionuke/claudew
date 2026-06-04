@@ -29,8 +29,6 @@ services:
     <<: *dind
     container_name: docker-a
     hostname: docker-a
-    volumes:
-      - dind-a:/var/lib/docker
 
   claudew-a:
     <<: *claudew
@@ -48,8 +46,6 @@ services:
     <<: *dind
     container_name: docker-b
     hostname: docker-b
-    volumes:
-      - dind-b:/var/lib/docker
 
   claudew-b:
     <<: *claudew
@@ -67,8 +63,6 @@ services:
     <<: *dind
     container_name: docker-c
     hostname: docker-c
-    volumes:
-      - dind-c:/var/lib/docker
 
   claudew-c:
     <<: *claudew
@@ -84,8 +78,3 @@ services:
 
 networks:
   network:
-
-volumes:
-  dind-a:
-  dind-b:
-  dind-c:
