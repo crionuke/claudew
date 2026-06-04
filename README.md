@@ -31,4 +31,4 @@ Workspaces: `./workspace_a`, `./workspace_b`, `./workspace_c`.
 ./iterm.sh
 ```
 
-Opens a tab split into three vertical panes (A | B | C), each running its worker.
+Opens three tabs (A, B, C), each running its worker.
