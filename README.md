@@ -18,12 +18,12 @@ Three Dockerized Claude Code workers (`a`, `b`, `c`) running in parallel with `-
 ## Run
 
 ```bash
-./claudew_a.sh   # red
-./claudew_b.sh   # green
-./claudew_c.sh   # blue
+./claudew-a.sh   # red
+./claudew-b.sh   # green
+./claudew-c.sh   # blue
 ```
 
-Workspaces: `./workspace_a`, `./workspace_b`, `./workspace_c`.
+Workspaces: `./workspace-a`, `./workspace-b`, `./workspace-c`.
 
 ### All three (iTerm2)
 

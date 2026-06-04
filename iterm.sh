@@ -3,8 +3,6 @@ set -euo pipefail
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
-docker compose up -d --build
-
 osascript <<EOF
 tell application "iTerm2"
     activate
@@ -14,15 +12,15 @@ tell application "iTerm2"
     tell current window
         set tab_a to (create tab with default profile)
         tell current session of tab_a
-            write text "exec '$DIR/claudew_a.sh'"
+            write text "exec '$DIR/claudew-a.sh'"
         end tell
         set tab_b to (create tab with default profile)
         tell current session of tab_b
-            write text "exec '$DIR/claudew_b.sh'"
+            write text "exec '$DIR/claudew-b.sh'"
         end tell
         set tab_c to (create tab with default profile)
         tell current session of tab_c
-            write text "exec '$DIR/claudew_c.sh'"
+            write text "exec '$DIR/claudew-c.sh'"
         end tell
     end tell
 end tell

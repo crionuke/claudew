@@ -25,64 +25,67 @@ x-dind: &dind
     - network
 
 services:
-  claudew_a_docker:
+  docker-a:
     <<: *dind
-    container_name: claudew_a_docker
-    hostname: claudew_a_docker
+    container_name: docker-a
+    hostname: docker-a
     volumes:
-      - dind_a:/var/lib/docker
+      - dind-a:/var/lib/docker
 
-  claudew_a:
+  claudew-a:
     <<: *claudew
-    container_name: claudew_a
-    hostname: claudew_a
+    container_name: claudew-a
+    hostname: claudew-a
     environment:
-      DOCKER_HOST: tcp://claudew_a_docker:2375
+      DOCKER_HOST: tcp://docker-a:2375
+      TEST_HOST: docker-a
     depends_on:
-      - claudew_a_docker
+      - docker-a
     volumes:
-      - ./workspace_a:/home/claudew
+      - ./workspace-a:/home/claudew
 
-  claudew_b_docker:
+  docker-b:
     <<: *dind
-    container_name: claudew_b_docker
-    hostname: claudew_b_docker
+    container_name: docker-b
+    hostname: docker-b
     volumes:
-      - dind_b:/var/lib/docker
+      - dind-b:/var/lib/docker
 
-  claudew_b:
+  claudew-b:
     <<: *claudew
-    container_name: claudew_b
-    hostname: claudew_b
+    container_name: claudew-b
+    hostname: claudew-b
     environment:
-      DOCKER_HOST: tcp://claudew_b_docker:2375
+      DOCKER_HOST: tcp://docker-b:2375
+      TEST_HOST: docker-b
     depends_on:
-      - claudew_b_docker
+      - docker-b
     volumes:
-      - ./workspace_b:/home/claudew
+      - ./workspace-b:/home/claudew
 
-  claudew_c_docker:
+  docker-c:
     <<: *dind
-    container_name: claudew_c_docker
-    hostname: claudew_c_docker
+    container_name: docker-c
+    hostname: docker-c
     volumes:
-      - dind_c:/var/lib/docker
+      - dind-c:/var/lib/docker
 
-  claudew_c:
+  claudew-c:
     <<: *claudew
-    container_name: claudew_c
-    hostname: claudew_c
+    container_name: claudew-c
+    hostname: claudew-c
     environment:
-      DOCKER_HOST: tcp://claudew_c_docker:2375
+      DOCKER_HOST: tcp://docker-c:2375
+      TEST_HOST: docker-c
     depends_on:
-      - claudew_c_docker
+      - docker-c
     volumes:
-      - ./workspace_c:/home/claudew
+      - ./workspace-c:/home/claudew
 
 networks:
   network:
 
 volumes:
-  dind_a:
-  dind_b:
-  dind_c:
+  dind-a:
+  dind-b:
+  dind-c:
