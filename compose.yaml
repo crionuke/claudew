@@ -1,6 +1,6 @@
 name: claudew
 
-x-claudew: &claudew
+x-worker: &worker
   build:
     context: .
     dockerfile: docker/Dockerfile
@@ -30,10 +30,10 @@ services:
     container_name: docker-a
     hostname: docker-a
 
-  claudew-a:
-    <<: *claudew
-    container_name: claudew-a
-    hostname: claudew-a
+  worker-a:
+    <<: *worker
+    container_name: worker-a
+    hostname: worker-a
     environment:
       DOCKER_HOST: tcp://docker-a:2375
       TEST_HOST: docker-a
@@ -47,10 +47,10 @@ services:
     container_name: docker-b
     hostname: docker-b
 
-  claudew-b:
-    <<: *claudew
-    container_name: claudew-b
-    hostname: claudew-b
+  worker-b:
+    <<: *worker
+    container_name: worker-b
+    hostname: worker-b
     environment:
       DOCKER_HOST: tcp://docker-b:2375
       TEST_HOST: docker-b
@@ -64,10 +64,10 @@ services:
     container_name: docker-c
     hostname: docker-c
 
-  claudew-c:
-    <<: *claudew
-    container_name: claudew-c
-    hostname: claudew-c
+  worker-c:
+    <<: *worker
+    container_name: worker-c
+    hostname: worker-c
     environment:
       DOCKER_HOST: tcp://docker-c:2375
       TEST_HOST: docker-c

@@ -18,9 +18,9 @@ Three Dockerized Claude Code workers (`a`, `b`, `c`) running in parallel with `-
 ## Run
 
 ```bash
-./claudew-a.sh   # red
-./claudew-b.sh   # green
-./claudew-c.sh   # blue
+./worker-a.sh   # red
+./worker-b.sh   # green
+./worker-c.sh   # blue
 ```
 
 Workspaces: `./workspace-a`, `./workspace-b`, `./workspace-c`.
