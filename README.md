@@ -6,7 +6,7 @@ Three Dockerized Claude Code workers (`a`, `b`, `c`) running in parallel with `-
 
 - Ubuntu 24.04, Node.js 22, Claude Code
 - Java 25 (Temurin) + Quarkus CLI via SDKMAN
-- `gh`, `docker` CLI — each worker talks to its own isolated `docker:dind` daemon (no shared host socket)
+- `gh`, `docker` CLI
 - Skills from `./skills/` synced to `~/.claude/skills` on start
 - Per-worker SSH key + git identity
 

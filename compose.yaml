@@ -25,10 +25,10 @@ x-dind: &dind
     - network
 
 services:
-  claudew_a-docker:
+  claudew_a_docker:
     <<: *dind
-    container_name: claudew_a-docker
-    hostname: claudew_a-docker
+    container_name: claudew_a_docker
+    hostname: claudew_a_docker
     volumes:
       - dind_a:/var/lib/docker
 
@@ -37,16 +37,16 @@ services:
     container_name: claudew_a
     hostname: claudew_a
     environment:
-      DOCKER_HOST: tcp://claudew_a-docker:2375
+      DOCKER_HOST: tcp://claudew_a_docker:2375
     depends_on:
-      - claudew_a-docker
+      - claudew_a_docker
     volumes:
       - ./workspace_a:/home/claudew
 
-  claudew_b-docker:
+  claudew_b_docker:
     <<: *dind
-    container_name: claudew_b-docker
-    hostname: claudew_b-docker
+    container_name: claudew_b_docker
+    hostname: claudew_b_docker
     volumes:
       - dind_b:/var/lib/docker
 
@@ -55,16 +55,16 @@ services:
     container_name: claudew_b
     hostname: claudew_b
     environment:
-      DOCKER_HOST: tcp://claudew_b-docker:2375
+      DOCKER_HOST: tcp://claudew_b_docker:2375
     depends_on:
-      - claudew_b-docker
+      - claudew_b_docker
     volumes:
       - ./workspace_b:/home/claudew
 
-  claudew_c-docker:
+  claudew_c_docker:
     <<: *dind
-    container_name: claudew_c-docker
-    hostname: claudew_c-docker
+    container_name: claudew_c_docker
+    hostname: claudew_c_docker
     volumes:
       - dind_c:/var/lib/docker
 
@@ -73,9 +73,9 @@ services:
     container_name: claudew_c
     hostname: claudew_c
     environment:
-      DOCKER_HOST: tcp://claudew_c-docker:2375
+      DOCKER_HOST: tcp://claudew_c_docker:2375
     depends_on:
-      - claudew_c-docker
+      - claudew_c_docker
     volumes:
       - ./workspace_c:/home/claudew
 
