@@ -12,42 +12,77 @@ x-claudew: &claudew
   working_dir: /home/claudew
   env_file:
     - .env
+  networks:
+    - network
+
+x-dind: &dind
+  image: docker:dind
+  privileged: true
+  restart: unless-stopped
   environment:
-    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
   networks:
     - network
 
 services:
-  docker:
-    image: alpine/socat
-    container_name: docker
-    command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
-    restart: unless-stopped
-    networks:
-      - network
+  claudew_a_docker:
+    <<: *dind
+    container_name: claudew_a_docker
+    hostname: claudew_a_docker
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - dind_a:/var/lib/docker
 
   claudew_a:
     <<: *claudew
     container_name: claudew_a
     hostname: claudew_a
+    environment:
+      DOCKER_HOST: tcp://claudew_a_docker:2375
+    depends_on:
+      - claudew_a_docker
     volumes:
       - ./workspace_a:/home/claudew
+
+  claudew_b_docker:
+    <<: *dind
+    container_name: claudew_b_docker
+    hostname: claudew_b_docker
+    volumes:
+      - dind_b:/var/lib/docker
 
   claudew_b:
     <<: *claudew
     container_name: claudew_b
     hostname: claudew_b
+    environment:
+      DOCKER_HOST: tcp://claudew_b_docker:2375
+    depends_on:
+      - claudew_b_docker
     volumes:
       - ./workspace_b:/home/claudew
+
+  claudew_c_docker:
+    <<: *dind
+    container_name: claudew_c_docker
+    hostname: claudew_c_docker
+    volumes:
+      - dind_c:/var/lib/docker
 
   claudew_c:
     <<: *claudew
     container_name: claudew_c
     hostname: claudew_c
+    environment:
+      DOCKER_HOST: tcp://claudew_c_docker:2375
+    depends_on:
+      - claudew_c_docker
     volumes:
       - ./workspace_c:/home/claudew
 
 networks:
   network:
+
+volumes:
+  dind_a:
+  dind_b:
+  dind_c:
