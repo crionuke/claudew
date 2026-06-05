@@ -39,8 +39,8 @@ ok=0 skipped=0 failed=0
 
 for repo in "$WORKSPACE"/*/*; do
   [ -d "$repo/.git" ] || continue
-  matches "$repo" || continue
   name="${repo#$WORKSPACE/}"
+  matches "$name" || continue
   cd "$repo" || continue
 
   if [ -n "$(git status --porcelain)" ]; then
