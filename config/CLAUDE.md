@@ -56,7 +56,8 @@ Language-agnostic rules. Apply everywhere.
 
 #### Code style
 
-- No code comments — code must be self-documenting via clear naming
+- No code comments — code must be self-documenting via clear naming, except in tests where comments document intent,
+  scenarios, and edge cases
 
 #### Logging levels
 
