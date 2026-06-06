@@ -25,17 +25,6 @@ ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
-# Create `claudew` user (beforehand, so subsequent setup can target $HOME)
-ARG USERNAME=claudew
-ARG USER_UID=1000
-ARG USER_GID=1000
-RUN if getent passwd "$USER_UID" >/dev/null; then userdel -r "$(getent passwd "$USER_UID" | cut -d: -f1)" 2>/dev/null || true; fi \
-    && if getent group "$USER_GID" >/dev/null; then groupdel "$(getent group "$USER_GID" | cut -d: -f1)" 2>/dev/null || true; fi \
-    && groupadd --gid "$USER_GID" "$USERNAME" \
-    && useradd --uid "$USER_UID" --gid "$USER_GID" -m -s /bin/bash "$USERNAME" \
-    && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
-
 # GitHub CLI
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
         | tee /usr/share/keyrings/githubcli-archive-keyring.gpg > /dev/null \
@@ -57,8 +46,7 @@ RUN install -m 0755 -d /etc/apt/keyrings \
         docker-compose-plugin \
         docker-buildx-plugin \
     && rm -rf /var/lib/apt/lists/* \
-    && groupadd -f docker \
-    && usermod -aG docker "$USERNAME"
+    && groupadd -f docker
 
 # Node.js (for Claude Code)
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
@@ -88,10 +76,10 @@ ENV JAVA_HOME=/opt/sdkman/candidates/java/current \
 ENV PATH=$JAVA_HOME/bin:$QUARKUS_HOME/bin:$PATH
 
 # Project skills — symlinked into ~/.claude/skills by the entrypoint
-COPY --chown=claudew:claudew skills /opt/claudew/skills
+COPY skills /opt/claudew/skills
 
 # Global workspace config (CLAUDE.md, etc.) — copied into ~/workspace by the entrypoint
-COPY --chown=claudew:claudew config /opt/claudew/config
+COPY config /opt/claudew/config
 
 # Git identity — consumed by entrypoint to seed ~/.gitconfig and the SSH key on first run
 ARG GIT_USER_NAME
@@ -102,8 +90,7 @@ ENV GIT_USER_NAME=$GIT_USER_NAME \
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-USER claudew
-WORKDIR /home/claudew
+WORKDIR /claudew
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["/bin/bash"]

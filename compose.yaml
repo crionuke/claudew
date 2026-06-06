@@ -7,13 +7,12 @@ x-worker: &worker
     args:
       GIT_USER_NAME: ${GIT_USER_NAME}
       GIT_USER_EMAIL: ${GIT_USER_EMAIL}
-  user: root
   environment:
-    HOME: /home/claudew
+    HOME: /claudew
     IS_SANDBOX: "1"
   stdin_open: true
   tty: true
-  working_dir: /home/claudew
+  working_dir: /claudew
   env_file:
     - .env
   extra_hosts:
@@ -27,7 +26,7 @@ services:
     container_name: worker-a
     hostname: worker-a
     volumes:
-      - ./workspace-a:/home/claudew
+      - ./workspace-a:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
   worker-b:
@@ -35,7 +34,7 @@ services:
     container_name: worker-b
     hostname: worker-b
     volumes:
-      - ./workspace-b:/home/claudew
+      - ./workspace-b:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
   worker-c:
@@ -43,7 +42,7 @@ services:
     container_name: worker-c
     hostname: worker-c
     volumes:
-      - ./workspace-c:/home/claudew
+      - ./workspace-c:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
 networks:
