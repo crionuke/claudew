@@ -25,7 +25,7 @@ Clone into `~/workspace/<owner>/<repo>` mirroring the GitHub path (e.g. `OMGSERV
 3. Monitor checks to completion (`gh pr checks --watch`); fix failures and address review comments. Never walk away.
 4. If asked to push to the default branch, do it and monitor its workflow runs the same way.
 5. Once the PR is merged or the branch has been pushed, check out the default branch and pull remote changes.
-    
+
 See `~/workspace/pull-requests.md`.
 
 ### Issue tracker
@@ -40,40 +40,32 @@ overrides allowed. See `~/workspace/triage-labels.md`.
 
 ## Coding standards
 
-### Doc lookup
+### Common
 
-- Before writing third-party code (Quarkus, Hibernate, MapStruct, Quartz, OIDC, Flyway, …), verify the API via the
-  `find-docs` skill. Skip for own logic and stdlib.
+Language-agnostic rules. Apply everywhere.
 
-### Git commits
+#### Doc lookup
+
+- Before writing third-party code (any library, framework, SDK, or CLI), verify the API via the `find-docs` skill. Skip
+  for own logic and stdlib.
+
+#### Git commits
 
 - Never add Co-Authored-By lines to git commit messages
 - Keep commit messages short without any explanations
 
-### Quarkus config
+#### Code style
 
-- Manage Quarkus deps via the CLI (`quarkus ext add …`, `quarkus dev`, `quarkus build`), not by editing `pom.xml`.
-- Profile config in `application-{profile}.yaml` files (e.g. `application-dev.yaml`), not inline `%dev`/`%test` keys.
-- Read config via `@ConfigMapping`, not `@ConfigProperty`. Keep defaults in the yaml, not in`@WithDefault`.
+- No code comments — code must be self-documenting via clear naming
 
-### Code style
+#### Logging levels
 
-- Initialize fields in constructors, not inline
-- `final var` for local variables, `final` for method arguments and class fields
-- Short variable names when unambiguous: `PlayerService players`, not `playerService`
-- Parameterized logging: `log.info("Message with value {}", value)`
-- Java Stream API over `for`/`while` loops for collection iteration and transformation
-- `@ApplicationScoped` on services and repositories (Jakarta)
-- `Dto` suffix for inter-layer carriers; `Request`/`Response` for HTTP bodies. Endpoint scope lives in the package.
-- `Spec` suffix for transient creation payloads passed to `service.create(...)`. `Config` suffix for developer-supplied
-  JSON blobs persisted on an entity (JSONB column).
+- `debug` — diagnostics
+- `info` — significant events (state changes, auth)
+- `warn` — recoverable issues, edge paths
+- `error` — unexpected failures needing attention
 
-### Lombok usage
-
-- `@AllArgsConstructor` + `private final` fields for constructor injection (Lombok). No `@Inject` on fields
-- `@Slf4j` for logging (Lombok)
-
-### SQL style
+#### SQL style
 
 - Lowercase everything (tables, columns, keywords)
 - `if not exists` guardrails
@@ -82,9 +74,6 @@ overrides allowed. See `~/workspace/triage-labels.md`.
 - Timestamps: `timestamp with time zone`
 - Opening `(` on the same line as `create table`
 
-### Logging levels
+### Java rules
 
-- `debug` — diagnostics
-- `info` — significant events (state changes, auth)
-- `warn` — recoverable issues, edge paths
-- `error` — unexpected failures needing attention
+Java/Jakarta-specific rules. See `~/workspace/java-rules.md`.
