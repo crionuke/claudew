@@ -1,9 +1,9 @@
 ---
-name: to-main
-description: Checkout the default branch and pull latest changes for repos under ~/workspace. Use when the user wants to sync repos to main/default, "go to main", reset clones to the default branch, or pull updates across all (or specific) workspace repos.
+name: sync-repos
+description: Checkout each repo's default branch and pull latest changes for repos under ~/workspace. Use when the user wants to sync repos to their default branch, "sync repos", "go to main/default", reset clones to the default branch, or pull updates across all (or specific) workspace repos.
 ---
 
-# to-main
+# sync-repos
 
 Checkout each repo's **default branch** (per-repo, not assumed `main`) and `git pull --ff-only`.
 Operates on every repo under `~/workspace` unless the user names specific ones.
@@ -13,13 +13,13 @@ Operates on every repo under `~/workspace` unless the user names specific ones.
 Run the bundled script and report its summary:
 
 ```bash
-bash ~/.claude/skills/to-main/scripts/to-main.sh
+bash ~/.claude/skills/sync-repos/scripts/sync-repos.sh
 ```
 
 Scope to specific repos by passing path-substring filters:
 
 ```bash
-bash ~/.claude/skills/to-main/scripts/to-main.sh omgserver byvshev-web
+bash ~/.claude/skills/sync-repos/scripts/sync-repos.sh omgserver byvshev-web
 ```
 
 ## Behavior

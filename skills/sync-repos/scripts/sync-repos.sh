@@ -2,9 +2,9 @@
 # Checkout the default branch and pull for repos under ~/workspace.
 #
 # Usage:
-#   to-main.sh                 # all repos under ~/workspace
-#   to-main.sh omgserver       # only repos whose path matches "omgserver"
-#   to-main.sh omgctl byvshev  # multiple filters (OR-matched)
+#   sync-repos.sh                 # all repos under ~/workspace
+#   sync-repos.sh omgserver       # only repos whose path matches "omgserver"
+#   sync-repos.sh omgctl byvshev  # multiple filters (OR-matched)
 #
 # Repos with uncommitted changes are skipped (never clobbered).
 
