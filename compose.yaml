@@ -21,28 +21,28 @@ x-worker: &worker
     - network
 
 services:
-  worker-a:
+  worker_a:
     <<: *worker
-    container_name: worker-a
-    hostname: worker-a
+    container_name: worker_a
+    hostname: worker_a
     volumes:
-      - ./workspace-a:/claudew
+      - ./workspace_a:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
-  worker-b:
+  worker_b:
     <<: *worker
-    container_name: worker-b
-    hostname: worker-b
+    container_name: worker_b
+    hostname: worker_b
     volumes:
-      - ./workspace-b:/claudew
+      - ./workspace_b:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
-  worker-c:
+  worker_c:
     <<: *worker
-    container_name: worker-c
-    hostname: worker-c
+    container_name: worker_c
+    hostname: worker_c
     volumes:
-      - ./workspace-c:/claudew
+      - ./workspace_c:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
 networks:

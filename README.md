@@ -23,7 +23,7 @@ Three Dockerized Claude Code workers (`a`, `b`, `c`) running in parallel with `-
 ./worker-c.sh   # blue
 ```
 
-Workspaces: `./workspace-a`, `./workspace-b`, `./workspace-c`.
+Workspaces: `./workspace_a`, `./workspace_b`, `./workspace_c`.
 
 ### All three (iTerm2)
 
