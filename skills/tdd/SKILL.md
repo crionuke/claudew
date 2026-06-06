@@ -17,7 +17,11 @@ description: Test-driven development with red-green-refactor loop. Use when user
 
 **Unit tests are the exception, not the driver.** Design is driven outside-in by behavior tests through the public interface — not by making internal classes unit-testable. A fine-grained unit test is earned post-hoc, only for a stateless algorithmic class whose behavior is fully determined by its arguments; it recognizes a clean algorithm that emerged, it does not shape the design.
 
-See [tests.md](tests.md) for examples.
+**Good vs bad, concretely:**
+
+- Good: tests behavior a caller cares about · uses the public API only · survives internal refactors · describes WHAT, not HOW · one logical assertion per test.
+- Red flags: testing private methods · asserting on call counts or call order · verifying through a side channel (reading the DB directly) instead of the interface · a name that describes HOW, not WHAT.
+- The side-channel fix: assert through the same surface a caller uses — create via the API, read it back via the API. If a behavior can only be checked through a side channel, the public interface is probably missing a read surface.
 
 ## Anti-Pattern: Horizontal Slices
 
@@ -54,8 +58,8 @@ Before writing any code:
 
 - [ ] Confirm with user what interface changes are needed
 - [ ] Confirm with user which behaviors to test (prioritize)
-- [ ] Identify opportunities for [deep modules](deep-modules.md) (small interface, deep implementation)
-- [ ] Design interfaces for [testability](interface-design.md)
+- [ ] Identify opportunities for deep modules — small interface, deep implementation (see Design for testability)
+- [ ] Design interfaces for testability (see Design for testability)
 - [ ] List the behaviors to test (not implementation steps)
 - [ ] Get user approval on the plan
 
@@ -92,15 +96,27 @@ Rules:
 
 ### 4. Refactor
 
-After all tests pass, look for [refactor candidates](refactoring.md):
+After all tests pass, look for refactor candidates:
 
-- [ ] Extract duplication
-- [ ] Deepen modules (move complexity behind simple interfaces)
-- [ ] Apply SOLID principles where natural
-- [ ] Consider what new code reveals about existing code
-- [ ] Run tests after each refactor step
+- **Duplication** → extract function/class
+- **Long methods** → break into private helpers (keep tests on the public interface)
+- **Shallow modules** → combine or deepen
+- **Feature envy** → move logic to where the data lives
+- **Primitive obsession** → introduce value objects
+- **Existing code** the new code reveals as problematic
+- Run tests after each refactor step
 
 **Never refactor while RED.** Get to GREEN first.
+
+## Design for testability
+
+**Deep modules** — a small interface over a lot of implementation. Hide complexity behind a narrow surface; avoid shallow modules (large interface, thin pass-through implementation that just delegates). When designing an interface, ask: can I reduce the number of methods? simplify the parameters? hide more complexity inside?
+
+**Interface design:**
+
+- **Accept dependencies, don't create them** — pass collaborators in rather than constructing them internally. Injected real collaborators keep the unit composable (this is not about mocking — see Philosophy).
+- **Prefer returning results over side effects** — a function that returns a value is easier to verify than one that mutates hidden state.
+- **Small surface area** — fewer methods and fewer parameters mean fewer tests and simpler setup.
 
 ## Checklist Per Cycle
 
