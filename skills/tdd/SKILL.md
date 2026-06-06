@@ -58,8 +58,8 @@ Before writing any code:
 
 - [ ] Confirm with user what interface changes are needed
 - [ ] Confirm with user which behaviors to test (prioritize)
-- [ ] Identify opportunities for deep modules — small interface, deep implementation (see Design for testability)
-- [ ] Design interfaces for testability (see Design for testability)
+- [ ] Identify opportunities for deep modules — small interface, deep implementation
+- [ ] Make the behavior observable through the public interface (add a read surface if missing)
 - [ ] List the behaviors to test (not implementation steps)
 - [ ] Get user approval on the plan
 
@@ -107,16 +107,6 @@ After all tests pass, look for refactor candidates:
 - Run tests after each refactor step
 
 **Never refactor while RED.** Get to GREEN first.
-
-## Design for testability
-
-**Deep modules** — a small interface over a lot of implementation. Hide complexity behind a narrow surface; avoid shallow modules (large interface, thin pass-through implementation that just delegates). When designing an interface, ask: can I reduce the number of methods? simplify the parameters? hide more complexity inside?
-
-**Interface design:**
-
-- **Accept dependencies, don't create them** — pass collaborators in rather than constructing them internally. Injected real collaborators keep the unit composable (this is not about mocking — see Philosophy).
-- **Prefer returning results over side effects** — a function that returns a value is easier to verify than one that mutates hidden state.
-- **Small surface area** — fewer methods and fewer parameters mean fewer tests and simpler setup.
 
 ## Checklist Per Cycle
 
