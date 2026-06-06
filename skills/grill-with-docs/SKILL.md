@@ -5,6 +5,8 @@ description: Grilling session that challenges your plan against the existing dom
 
 <what-to-do>
 
+Conduct the entire grilling session in Russian — every question, recommendation, and challenge you address to me must be written in Russian, regardless of the language of the plan or the codebase. Keep code, identifiers, and file contents in their original language.
+
 Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
 
 Ask the questions one at a time, waiting for feedback on each question before continuing.
