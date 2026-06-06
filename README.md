@@ -18,17 +18,17 @@ Three Dockerized Claude Code workers (`a`, `b`, `c`) running in parallel with `-
 ## Run
 
 ```bash
-./worker-a.sh   # red
-./worker-b.sh   # green
-./worker-c.sh   # blue
+./worker_a.sh   # red
+./worker_b.sh   # green
+./worker_c.sh   # blue
 ```
 
-Workspaces: `./workspace_a`, `./workspace_b`, `./workspace_c`.
+Workspaces: `./volumes/worker_a`, `./volumes/worker_b`, `./volumes/worker_c`.
 
 ### All three (iTerm2)
 
 ```bash
-./iterm.sh
+./open.sh
 ```
 
 Opens three tabs (A, B, C), each running its worker.

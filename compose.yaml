@@ -26,7 +26,7 @@ services:
     container_name: worker_a
     hostname: worker_a
     volumes:
-      - ./workspace_a:/claudew
+      - ./volumes/worker_a:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
   worker_b:
@@ -34,7 +34,7 @@ services:
     container_name: worker_b
     hostname: worker_b
     volumes:
-      - ./workspace_b:/claudew
+      - ./volumes/worker_b:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
   worker_c:
@@ -42,7 +42,7 @@ services:
     container_name: worker_c
     hostname: worker_c
     volumes:
-      - ./workspace_c:/claudew
+      - ./volumes/worker_c:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
 networks:
