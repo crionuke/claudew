@@ -28,12 +28,12 @@ Clone into `~/workspace/<owner>/<repo>` mirroring the GitHub path (e.g. `OMGSERV
 
 See `~/workspace/pull-requests.md`.
 
-### Issue tracker
+## Issue tracker
 
 Issues and PRDs live in GitHub Issues for the active repo. Use the `gh` CLI from inside the clone. See
 `~/workspace/issue-tracker.md`.
 
-### Triage labels
+## Triage labels
 
 Default label strings: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. Per-repo
 overrides allowed. See `~/workspace/triage-labels.md`.
@@ -65,7 +65,7 @@ Language-agnostic rules. Apply everywhere.
 - `warn` — recoverable issues, edge paths
 - `error` — unexpected failures needing attention
 
-#### SQL style
+### SQL style
 
 - Lowercase everything (tables, columns, keywords)
 - `if not exists` guardrails
