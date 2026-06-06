@@ -7,74 +7,44 @@ x-worker: &worker
     args:
       GIT_USER_NAME: ${GIT_USER_NAME}
       GIT_USER_EMAIL: ${GIT_USER_EMAIL}
+  user: root
+  environment:
+    HOME: /home/claudew
+    IS_SANDBOX: "1"
   stdin_open: true
   tty: true
   working_dir: /home/claudew
   env_file:
     - .env
-  networks:
-    - network
-
-x-dind: &dind
-  image: docker:dind
-  privileged: true
-  restart: unless-stopped
-  environment:
-    DOCKER_TLS_CERTDIR: ""
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
   networks:
     - network
 
 services:
-  docker-a:
-    <<: *dind
-    container_name: docker-a
-    hostname: docker-a
-
   worker-a:
     <<: *worker
     container_name: worker-a
     hostname: worker-a
-    environment:
-      DOCKER_HOST: tcp://docker-a:2375
-      TEST_HOST: docker-a
-    depends_on:
-      - docker-a
     volumes:
       - ./workspace-a:/home/claudew
-
-  docker-b:
-    <<: *dind
-    container_name: docker-b
-    hostname: docker-b
+      - /var/run/docker.sock:/var/run/docker.sock
 
   worker-b:
     <<: *worker
     container_name: worker-b
     hostname: worker-b
-    environment:
-      DOCKER_HOST: tcp://docker-b:2375
-      TEST_HOST: docker-b
-    depends_on:
-      - docker-b
     volumes:
       - ./workspace-b:/home/claudew
-
-  docker-c:
-    <<: *dind
-    container_name: docker-c
-    hostname: docker-c
+      - /var/run/docker.sock:/var/run/docker.sock
 
   worker-c:
     <<: *worker
     container_name: worker-c
     hostname: worker-c
-    environment:
-      DOCKER_HOST: tcp://docker-c:2375
-      TEST_HOST: docker-c
-    depends_on:
-      - docker-c
     volumes:
       - ./workspace-c:/home/claudew
+      - /var/run/docker.sock:/var/run/docker.sock
 
 networks:
   network:
