@@ -6,19 +6,17 @@ DIR="$(pwd)"
 
 usage() {
     cat <<EOF
-usage: open.sh (-i | -a | -b | -c) [claudew args...]
+usage: open.sh (-i | -a | -b | -c)
 
   -i       open worker_a, worker_b and worker_c, each in its own iTerm tab
   -a       run only the worker_a session in the current terminal
   -b       run only the worker_b session in the current terminal
   -c       run only the worker_c session in the current terminal
-
-  Extra args after the flag are passed through to claudew.
 EOF
 }
 
 run_worker() {
-    local id="$1"; shift
+    local id="$1"
     local name service tab cursor bg
     case "$id" in
         a) name=A; service=worker_a; tab=B82D2D; cursor=D85454; bg=1F0808 ;;
@@ -34,7 +32,7 @@ run_worker() {
     trap 'printf "\033]1337;SetColors=tab=\007\033]1337;SetColors=cursor=\007\033]1337;SetColors=bg=\007\033]0;\007\033]1337;SetUserVar=CLAUDEW=\007"' EXIT
 
     docker compose up -d --build "$service"
-    docker compose exec "$service" claudew "$@"
+    docker compose exec "$service" claudew
 }
 
 open_all() {
@@ -67,12 +65,11 @@ if [ $# -eq 0 ]; then
     exit 0
 fi
 
-mode="$1"; shift
-case "$mode" in
+case "$1" in
     -i) open_all ;;
-    -a) run_worker a "$@" ;;
-    -b) run_worker b "$@" ;;
-    -c) run_worker c "$@" ;;
+    -a) run_worker a ;;
+    -b) run_worker b ;;
+    -c) run_worker c ;;
     -h|--help) usage ;;
-    *) echo "unknown option: $mode" >&2; usage >&2; exit 1 ;;
+    *) echo "unknown option: $1" >&2; usage >&2; exit 1 ;;
 esac
