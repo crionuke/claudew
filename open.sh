@@ -6,9 +6,9 @@ DIR="$(pwd)"
 
 usage() {
     cat <<EOF
-usage: open.sh (-iterm | -a | -b | -c) [claudew args...]
+usage: open.sh (-i | -a | -b | -c) [claudew args...]
 
-  -iterm   open worker_a, worker_b and worker_c, each in its own iTerm tab
+  -i       open worker_a, worker_b and worker_c, each in its own iTerm tab
   -a       run only the worker_a session in the current terminal
   -b       run only the worker_b session in the current terminal
   -c       run only the worker_c session in the current terminal
@@ -69,7 +69,7 @@ fi
 
 mode="$1"; shift
 case "$mode" in
-    -iterm) open_all ;;
+    -i) open_all ;;
     -a) run_worker a "$@" ;;
     -b) run_worker b "$@" ;;
     -c) run_worker c "$@" ;;
