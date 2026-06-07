@@ -6,12 +6,14 @@ DIR="$(pwd)"
 
 usage() {
     cat <<EOF
-usage: open.sh [-a|-b|-c] [-- claudew args...]
+usage: open.sh (-iterm | -a | -b | -c) [claudew args...]
 
-  no args   open worker_a, worker_b and worker_c, each in its own iTerm tab
-  -a        run only the worker_a session in the current terminal
-  -b        run only the worker_b session in the current terminal
-  -c        run only the worker_c session in the current terminal
+  -iterm   open worker_a, worker_b and worker_c, each in its own iTerm tab
+  -a       run only the worker_a session in the current terminal
+  -b       run only the worker_b session in the current terminal
+  -c       run only the worker_c session in the current terminal
+
+  Extra args after the flag are passed through to claudew.
 EOF
 }
 
@@ -60,18 +62,17 @@ end tell
 EOF
 }
 
-worker=""
-while getopts ":abch" opt; do
-    case "$opt" in
-        a|b|c) worker="$opt" ;;
-        h) usage; exit 0 ;;
-        \?) echo "unknown option: -$OPTARG" >&2; usage >&2; exit 1 ;;
-    esac
-done
-shift $((OPTIND - 1))
-
-if [ -z "$worker" ]; then
-    open_all
-else
-    run_worker "$worker" "$@"
+if [ $# -eq 0 ]; then
+    usage
+    exit 0
 fi
+
+mode="$1"; shift
+case "$mode" in
+    -iterm) open_all ;;
+    -a) run_worker a "$@" ;;
+    -b) run_worker b "$@" ;;
+    -c) run_worker c "$@" ;;
+    -h|--help) usage ;;
+    *) echo "unknown option: $mode" >&2; usage >&2; exit 1 ;;
+esac

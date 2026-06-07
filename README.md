@@ -14,15 +14,16 @@ your machine. Launch and color-code them all from a single `open.sh`.
 ## Run
 
 ```bash
-./open.sh      # all three, each in its own iTerm2 tab
-./open.sh -a   # only worker_a (red)
-./open.sh -b   # only worker_b (green)
-./open.sh -c   # only worker_c (blue)
+./open.sh -iterm   # all three, each in its own iTerm2 tab
+./open.sh -a       # only worker_a (red)
+./open.sh -b       # only worker_b (green)
+./open.sh -c       # only worker_c (blue)
 ```
 
-With no argument, `open.sh` opens three iTerm2 tabs (A, B, C), each running its
-worker. With `-a`, `-b`, or `-c` it runs a single worker session in the current
-terminal. Extra args after the flag are passed through to `claudew`.
+`-iterm` opens three iTerm2 tabs (A, B, C), each running its worker. `-a`, `-b`,
+or `-c` runs a single worker session in the current terminal. Run with no
+argument to print usage. Extra args after the flag are passed through to
+`claudew`.
 
 Workspaces: `./volumes/worker_a`, `./volumes/worker_b`, `./volumes/worker_c`.
 
