@@ -6,6 +6,18 @@ touch your host or the others, you can hand it `--dangerously-skip-permissions`
 and let it work end to end — no permission prompts, no babysitting, no risk to
 your machine. Launch and color-code them all from a single `open.sh`.
 
+## Use cases
+
+- **Parallelize one project's backlog** — point several agents at different
+  issues in the same repo; each works in its own clone and opens its own PR,
+  never stepping on the others.
+- **Juggle several projects at once** — one agent per repo; switch between tabs
+  instead of paging context in and out of your head.
+- **Long background jobs** — leave a migration, dependency upgrade, or big
+  refactor running in one agent while you build the actual feature in another.
+- **Fire and forget** — inside the safe sandbox an agent takes a task all the
+  way to a PR on its own, no approvals or babysitting; walk away or go to sleep.
+
 ## Usage
 
 ```bash
@@ -17,7 +29,7 @@ cp .env.sample .env   # set GIT_USER_NAME, GIT_USER_EMAIL, GH_TOKEN, CONTEXT7_AP
 ```
 
 `open.sh` builds and starts each worker on demand. `-i` opens every agent in its
-own iTerm2 tab. To run a single worker in the current terminal, use `-a`, `-b`,
+own iTerm2 tab. To run a single agent in the current terminal, use `-a`, `-b`,
 or `-c` (red, green, blue). Run with no argument to print usage.
 
 Workspaces: `./volumes/worker_a`, `./volumes/worker_b`, `./volumes/worker_c`.
