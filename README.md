@@ -1,10 +1,10 @@
 # CLAUDEW
 
-Run three isolated Claude Code agents in parallel, each in its own Docker
-container. Every worker is a self-contained sandbox — its own filesystem, SSH
-key, git identity, and shared workspace volume — so agents can run
-autonomously with `--dangerously-skip-permissions` without touching your host
-or each other. Launch and color-code them all from a single `open.sh`.
+Run isolated Claude Code agents in parallel, each in its own Docker container.
+Every worker is a self-contained sandbox — its own filesystem, SSH key, git
+identity, and shared workspace volume — so agents can run autonomously with
+`--dangerously-skip-permissions` without touching your host or each other.
+Launch and color-code them all from a single `open.sh`.
 
 ## Stack
 
