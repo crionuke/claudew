@@ -18,8 +18,7 @@ cp .env.sample .env   # set GIT_USER_NAME, GIT_USER_EMAIL, GH_TOKEN, CONTEXT7_AP
 
 `open.sh` builds and starts each worker on demand. `-i` opens every agent in its
 own iTerm2 tab. To run a single worker in the current terminal, use `-a`, `-b`,
-or `-c` (red, green, blue). Run with no argument to print usage. Extra args after
-the flag are passed through to `claudew`.
+or `-c` (red, green, blue). Run with no argument to print usage.
 
 Workspaces: `./volumes/worker_a`, `./volumes/worker_b`, `./volumes/worker_c`.
 
