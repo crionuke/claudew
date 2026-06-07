@@ -14,8 +14,8 @@ single `open.sh`.
 
 > **This repo ships tuned to my own preferences and tech stack** — Java/Quarkus
 > rules, GitHub flow, iTerm2 launcher, the specific skills and coding standards
-> in `./config/` and `./skills/`. None of it is load-bearing. Swap the config
-> files, drop or add skills, change the base image in `docker/Dockerfile` to
+> in `./home/`. None of it is load-bearing. Swap the home-skeleton files, drop or
+> add skills, change the base image in `docker/Dockerfile` to
 > whatever language and tooling you use. The core idea — multiple Claude Code
 > agents running in parallel, each sealed in its own throwaway sandbox — and the
 > advantages that come with it stay exactly the same whoever you are.
@@ -52,28 +52,19 @@ cp .env.sample .env   # set GIT_USER_NAME, GIT_USER_EMAIL, GH_TOKEN, CONTEXT7_AP
 own iTerm2 tab. To run a single agent in the current terminal, use `-a`, `-b`,
 or `-c` (red, green, blue). Run with no argument to print usage.
 
-Workspaces: `./volumes/worker_a`, `./volumes/worker_b`, `./volumes/worker_c`.
+## Rules and skills
 
-## Agent rules
-
-Shared instructions in `./config/` that every worker follows across every repo,
-copied into each `~/workspace/` on start. A per-repo file of the same name wins.
-
-- **`CLAUDE.md`** — master ruleset (tone, repo layout, PR flow, coding standards).
-- **`pull-requests.md`** — opening, checking, and merging PRs with `gh`.
-- **`issue-tracker.md`** — GitHub Issues for issues and PRDs.
-- **`triage-labels.md`** — triage roles and their default labels.
-- **`java-rules.md`** — Java/Jakarta rules, applied only in Java repos.
-
-## Skills
-
-Bundled under `./skills/`, synced to `~/.claude/skills` on start.
-
-- **Docs & research** — `find-docs`, `seo-audit`
-- **Planning & tracking** — `to-prd`, `to-issues`, `triage`, `grill-with-docs`
-- **Building & refactoring** — `tdd`, `prototype`, `improve-codebase-architecture`, `zoom-out`
-- **Workspace & handoff** — `sync-repos`, `handoff`
-- **Skill authoring** — `write-a-skill`, `setup-matt-pocock-skills`
+- **Rules** — a home skeleton in `./home/`, overlaid onto each worker's `$HOME`
+  on start (so `~/workspace/` stays repos-only). `home/.claude/CLAUDE.md` is the
+  always-on master ruleset; `home/.claude/rules/` holds path-scoped rules that
+  load only when a worker touches matching files (e.g. `java.md` activates on
+  `*.java`/`pom.xml`); `home/docs/` holds reference docs pulled in on demand.
+  A per-repo file of the same name wins. Drop in your own files to change the
+  rules.
+- **Skills** — bundled under `./home/.claude/skills/`, synced to
+  `~/.claude/skills` on start. Baked-in skills are refreshed each start;
+  user-created skills survive. Add or remove skill folders to change what each
+  worker can do.
 
 ## Stack
 

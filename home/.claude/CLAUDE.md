@@ -26,17 +26,17 @@ Clone into `~/workspace/<owner>/<repo>` mirroring the GitHub path (e.g. `OMGSERV
 5. If asked to push to the default branch, do it and monitor its workflow runs the same way.
 6. Once the PR is merged or the branch has been pushed, check out the default branch and pull remote changes.
 
-See `~/workspace/pull-requests.md`.
+See `~/docs/pull-requests.md`.
 
 ## Issue tracker
 
 Issues and PRDs live in GitHub Issues for the active repo. Use the `gh` CLI from inside the clone. See
-`~/workspace/issue-tracker.md`.
+`~/docs/issue-tracker.md`.
 
 ## Triage labels
 
 Default label strings: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. Per-repo
-overrides allowed. See `~/workspace/triage-labels.md`.
+overrides allowed. See `~/docs/triage-labels.md`.
 
 ## Coding standards
 
@@ -74,7 +74,3 @@ Language-agnostic rules. Apply everywhere.
 - Prefer `not null`
 - Timestamps: `timestamp with time zone`
 - Opening `(` on the same line as `create table`
-
-### Java rules
-
-Java/Jakarta-specific rules. See `~/workspace/java-rules.md`.
