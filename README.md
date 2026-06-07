@@ -13,13 +13,13 @@ git clone https://github.com/crionuke/claudew.git
 cd claudew
 cp .env.sample .env   # set GIT_USER_NAME, GIT_USER_EMAIL, GH_TOKEN, CONTEXT7_API_KEY
 
-./open.sh -i          # all three, each in its own iTerm2 tab
+./open.sh -i          # all agents, each in its own iTerm2 tab
 ```
 
-`open.sh` builds and starts each worker on demand. `-i` opens three iTerm2 tabs
-(A, B, C), each running its worker. To run a single worker in the current
-terminal, use `-a`, `-b`, or `-c` (red, green, blue). Run with no argument to
-print usage. Extra args after the flag are passed through to `claudew`.
+`open.sh` builds and starts each worker on demand. `-i` opens every agent in its
+own iTerm2 tab. To run a single worker in the current terminal, use `-a`, `-b`,
+or `-c` (red, green, blue). Run with no argument to print usage. Extra args after
+the flag are passed through to `claudew`.
 
 Workspaces: `./volumes/worker_a`, `./volumes/worker_b`, `./volumes/worker_c`.
 
