@@ -2,12 +2,15 @@
 
 *Built to collaborate, not to work autonomously.*
 
-Run multiple Claude Code agents in parallel, each sealed in its own Docker
-container. Because every worker is a self-contained sandbox that can't touch
-your host or the others, you can hand it `--dangerously-skip-permissions` and
-skip the permission prompts on every step. You stay the one who reviews and
-merges — the sandbox just lets the agent move without you gating each action.
-Launch and color-code them all from a single `open.sh`.
+Run multiple Claude Code agents in parallel, each sealed in its own color-coded
+Docker sandbox loaded with **your** dev tools, rules, and skills. Because every
+worker is a self-contained sandbox that can't touch your host or the others, you
+can hand it `--dangerously-skip-permissions` and skip the permission prompts on
+every step. You stay the one who reviews and merges — the sandbox just lets the
+agent move without you gating each action. Each worker carries a multi-repo
+workspace, so you can hand one agent a cross-cutting task and let it edit every
+affected repo and open a PR in each. Launch and color-code them all from a
+single `open.sh`.
 
 > **This repo ships tuned to my own preferences and tech stack** — Java/Quarkus
 > rules, GitHub flow, iTerm2 launcher, the specific skills and coding standards
