@@ -18,17 +18,14 @@ Three Dockerized Claude Code workers (`a`, `b`, `c`) running in parallel with `-
 ## Run
 
 ```bash
-./worker_a.sh   # red
-./worker_b.sh   # green
-./worker_c.sh   # blue
+./open.sh      # all three, each in its own iTerm2 tab
+./open.sh -a   # only worker_a (red)
+./open.sh -b   # only worker_b (green)
+./open.sh -c   # only worker_c (blue)
 ```
+
+With no argument, `open.sh` opens three iTerm2 tabs (A, B, C), each running its
+worker. With `-a`, `-b`, or `-c` it runs a single worker session in the current
+terminal. Extra args after the flag are passed through to `claudew`.
 
 Workspaces: `./volumes/worker_a`, `./volumes/worker_b`, `./volumes/worker_c`.
-
-### All three (iTerm2)
-
-```bash
-./open.sh
-```
-
-Opens three tabs (A, B, C), each running its worker.
