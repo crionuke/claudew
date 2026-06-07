@@ -45,17 +45,14 @@ or `-c` (red, green, blue). Run with no argument to print usage.
 
 ## Rules and skills
 
-- **Rules** — a home skeleton in `./home/`, overlaid onto each worker's `$HOME`
-  on start (so `~/workspace/` stays repos-only). `home/.claude/CLAUDE.md` is the
-  always-on master ruleset; `home/.claude/rules/` holds path-scoped rules that
-  load only when a worker touches matching files (e.g. `java.md` activates on
-  `*.java`/`pom.xml`); `home/docs/` holds reference docs pulled in on demand.
-  A per-repo file of the same name wins. Drop in your own files to change the
-  rules.
-- **Skills** — bundled under `./home/.claude/skills/`, synced to
-  `~/.claude/skills` on start. Baked-in skills are refreshed each start;
-  user-created skills survive. Add or remove skill folders to change what each
-  worker can do.
+`./home/` is a skeleton overlaid onto each worker's `$HOME` on start, so
+`~/workspace/` stays repos-only. Drop in your own files to change any of it; a
+per-repo file of the same name wins.
+
+- **`home/.claude/CLAUDE.md`** — always-on master ruleset.
+- **`home/.claude/rules/`** — path-scoped rules, loaded only when a worker touches matching files (`java.md` on `*.java`/`pom.xml`).
+- **`home/.claude/skills/`** — skills synced to `~/.claude/skills`; baked-in ones refresh each start, your own survive.
+- **`home/docs/`** — reference docs pulled in on demand.
 
 ## Stack
 
