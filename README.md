@@ -22,21 +22,12 @@ single `open.sh`.
 
 ## Use cases
 
-- **Parallelize one project's backlog** — point several agents at different
-  issues in the same repo; each works in its own clone and opens its own PR,
-  never stepping on the others.
-- **Juggle several projects at once** — one agent per repo; switch between tabs
-  instead of paging context in and out of your head.
-- **Long background jobs** — keep a migration, dependency upgrade, or big
-  refactor moving in one agent while you build the actual feature in another.
-- **Hand off, then review** — inside the safe sandbox an agent takes a task all
-  the way to a PR; you hold the control points (review, merge), not every
-  intermediate step.
-- **Ship a change across repos at once** — hand one agent a cross-cutting task
-  and let it edit every affected repo in its workspace and open a PR in each.
-- **Bootstrap new projects from your own** — let an agent scaffold a fresh repo
-  and fill it in, mirroring the structure and conventions of the projects
-  already in its workspace.
+- **Parallelize one backlog** — several agents on different issues in one repo, each with its own clone and PR.
+- **Juggle several projects** — one agent per repo, one tab each.
+- **Long background jobs** — park a migration or big refactor in one agent while you build in another.
+- **Hand off, then review** — an agent goes all the way to a PR; you keep review and merge.
+- **Cross-repo changes** — one agent edits every affected repo and opens a PR in each.
+- **Bootstrap new projects** — an agent scaffolds a fresh repo following your existing conventions.
 
 ## Usage
 
