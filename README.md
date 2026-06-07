@@ -1,6 +1,10 @@
 # CLAUDEW
 
-Three Dockerized Claude Code workers (`a`, `b`, `c`) running in parallel with `--dangerously-skip-permissions`.
+Run Claude Code agents fully autonomously in parallel, each sealed in its own
+Docker container. Because every worker is a self-contained sandbox that can't
+touch your host or the others, you can hand it `--dangerously-skip-permissions`
+and let it work end to end — no permission prompts, no babysitting, no risk to
+your machine. Launch and color-code them all from a single `open.sh`.
 
 ## Stack
 
