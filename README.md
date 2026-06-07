@@ -46,13 +46,9 @@ or `-c` (red, green, blue). Run with no argument to print usage.
 ## Rules and skills
 
 `./home/` is a skeleton overlaid onto each worker's `$HOME` on start, so
-`~/workspace/` stays repos-only. Drop in your own files to change any of it; a
+`~/workspace/` stays repos-only. It carries the master ruleset, path-scoped
+rules, skills, and reference docs. Drop in your own files to change any of it; a
 per-repo file of the same name wins.
-
-- **`home/.claude/CLAUDE.md`** — always-on master ruleset.
-- **`home/.claude/rules/`** — path-scoped rules, loaded only when a worker touches matching files (`java.md` on `*.java`/`pom.xml`).
-- **`home/.claude/skills/`** — skills synced to `~/.claude/skills`; baked-in ones refresh each start, your own survive.
-- **`home/docs/`** — reference docs pulled in on demand.
 
 ## Stack
 
