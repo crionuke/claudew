@@ -8,8 +8,12 @@ your machine. Launch and color-code them all from a single `open.sh`.
 
 ## Setup
 
-1. `cp .env.sample .env` and set `GIT_USER_NAME`, `GIT_USER_EMAIL`, `GH_TOKEN`, `CONTEXT7_API_KEY`.
-2. Start Docker.
+```bash
+git clone https://github.com/crionuke/claudew.git
+cd claudew
+cp .env.sample .env          # set GIT_USER_NAME, GIT_USER_EMAIL, GH_TOKEN, CONTEXT7_API_KEY
+docker compose up -d --build # build images and start the workers
+```
 
 ## Run
 
