@@ -1,10 +1,13 @@
 # CLAUDEW
 
+*Built to collaborate, not to work autonomously.*
+
 Run multiple Claude Code agents in parallel, each sealed in its own Docker
 container. Because every worker is a self-contained sandbox that can't touch
 your host or the others, you can hand it `--dangerously-skip-permissions` and
-let it work without permission prompts — no babysitting, no risk to your
-machine. Launch and color-code them all from a single `open.sh`.
+skip the permission prompts on every step. You stay the one who reviews and
+merges — the sandbox just lets the agent move without you gating each action.
+Launch and color-code them all from a single `open.sh`.
 
 > **This repo ships tuned to my own preferences and tech stack** — Java/Quarkus
 > rules, GitHub flow, iTerm2 launcher, the specific skills and coding standards
@@ -21,10 +24,11 @@ machine. Launch and color-code them all from a single `open.sh`.
   never stepping on the others.
 - **Juggle several projects at once** — one agent per repo; switch between tabs
   instead of paging context in and out of your head.
-- **Long background jobs** — leave a migration, dependency upgrade, or big
-  refactor running in one agent while you build the actual feature in another.
-- **Fire and forget** — inside the safe sandbox an agent takes a task all the
-  way to a PR on its own, no approvals or babysitting; walk away or go to sleep.
+- **Long background jobs** — keep a migration, dependency upgrade, or big
+  refactor moving in one agent while you build the actual feature in another.
+- **Hand off, then review** — inside the safe sandbox an agent takes a task all
+  the way to a PR; you hold the control points (review, merge), not every
+  intermediate step.
 - **Ship a change across repos at once** — hand one agent a cross-cutting task
   and let it edit every affected repo in its workspace and open a PR in each.
 - **Bootstrap new projects from your own** — let an agent scaffold a fresh repo
