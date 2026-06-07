@@ -75,10 +75,7 @@ ENV JAVA_HOME=/opt/sdkman/candidates/java/current \
     QUARKUS_HOME=/opt/sdkman/candidates/quarkus/current
 ENV PATH=$JAVA_HOME/bin:$QUARKUS_HOME/bin:$PATH
 
-# Project skills — symlinked into ~/.claude/skills by the entrypoint
-COPY skills /opt/claudew/skills
-
-# Home skeleton (~/.claude/CLAUDE.md, ~/.claude/rules/, ~/docs/) — overlaid onto $HOME by the entrypoint
+# Home skeleton (~/.claude/CLAUDE.md, ~/.claude/rules/, ~/.claude/skills/, ~/docs/) — overlaid onto $HOME by the entrypoint
 COPY home /opt/claudew/home
 
 # Git identity — consumed by entrypoint to seed ~/.gitconfig and the SSH key on first run

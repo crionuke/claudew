@@ -14,8 +14,8 @@ single `open.sh`.
 
 > **This repo ships tuned to my own preferences and tech stack** — Java/Quarkus
 > rules, GitHub flow, iTerm2 launcher, the specific skills and coding standards
-> in `./home/` and `./skills/`. None of it is load-bearing. Swap the home-skeleton
-> files, drop or add skills, change the base image in `docker/Dockerfile` to
+> in `./home/`. None of it is load-bearing. Swap the home-skeleton files, drop or
+> add skills, change the base image in `docker/Dockerfile` to
 > whatever language and tooling you use. The core idea — multiple Claude Code
 > agents running in parallel, each sealed in its own throwaway sandbox — and the
 > advantages that come with it stay exactly the same whoever you are.
@@ -61,8 +61,10 @@ or `-c` (red, green, blue). Run with no argument to print usage.
   `*.java`/`pom.xml`); `home/docs/` holds reference docs pulled in on demand.
   A per-repo file of the same name wins. Drop in your own files to change the
   rules.
-- **Skills** — bundled under `./skills/`, synced to `~/.claude/skills` on start.
-  Add or remove skill folders to change what each worker can do.
+- **Skills** — bundled under `./home/.claude/skills/`, synced to
+  `~/.claude/skills` on start. Baked-in skills are refreshed each start;
+  user-created skills survive. Add or remove skill folders to change what each
+  worker can do.
 
 ## Stack
 

@@ -24,24 +24,14 @@ mkdir -p "$HOME/workspace"
 
 # Home skeleton — baked into the image, overlaid onto $HOME on every start.
 # ~/.claude/CLAUDE.md + ~/.claude/rules/ load as user instructions across every repo; ~/docs/ holds reference docs pulled in on demand.
+# Baked-in skills are removed first so the overlay writes them fresh (drops files deleted upstream); user-created skills with other names survive.
 HOME_SKEL=/opt/claudew/home
 if [ -d "$HOME_SKEL" ]; then
-    cp -af "$HOME_SKEL"/. "$HOME/"
-fi
-
-# Copy baked-in project skills into ~/.claude/skills, refreshed on every start.
-# Only the baked-in names are touched — user-created skills with other names survive.
-SKILLS_SRC=/opt/claudew/skills
-SKILLS_DST="$HOME/.claude/skills"
-if [ -d "$SKILLS_SRC" ]; then
-    mkdir -p "$SKILLS_DST"
-    for skill in "$SKILLS_SRC"/*/; do
+    for skill in "$HOME_SKEL"/.claude/skills/*/; do
         [ -d "$skill" ] || continue
-        name=$(basename "$skill")
-        target="$SKILLS_DST/$name"
-        rm -rf "$target"
-        cp -a "$skill" "$target"
+        rm -rf "$HOME/.claude/skills/$(basename "$skill")"
     done
+    cp -af "$HOME_SKEL"/. "$HOME/"
 fi
 
 exec "$@"
