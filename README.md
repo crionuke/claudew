@@ -6,6 +6,14 @@ touch your host or the others, you can hand it `--dangerously-skip-permissions`
 and let it work end to end — no permission prompts, no babysitting, no risk to
 your machine. Launch and color-code them all from a single `open.sh`.
 
+> **This repo ships tuned to my own preferences and tech stack** — Java/Quarkus
+> rules, GitHub flow, iTerm2 launcher, the specific skills and coding standards
+> in `./config/` and `./skills/`. None of it is load-bearing. Swap the config
+> files, drop or add skills, change the base image in `docker/Dockerfile` to
+> whatever language and tooling you use. The core idea — autonomous Claude Code
+> agents running in parallel, each sealed in its own throwaway sandbox — and the
+> advantages that come with it stay exactly the same whoever you are.
+
 ## Use cases
 
 - **Parallelize one project's backlog** — point several agents at different
