@@ -29,3 +29,13 @@ worker. With `-a`, `-b`, or `-c` it runs a single worker session in the current
 terminal. Extra args after the flag are passed through to `claudew`.
 
 Workspaces: `./volumes/worker_a`, `./volumes/worker_b`, `./volumes/worker_c`.
+
+## Skills
+
+Bundled under `./skills/`, synced to `~/.claude/skills` on start.
+
+- **Docs & research** — `find-docs`, `seo-audit`
+- **Planning & tracking** — `to-prd`, `to-issues`, `triage`, `grill-with-docs`
+- **Building & refactoring** — `tdd`, `prototype`, `improve-codebase-architecture`, `zoom-out`
+- **Workspace & handoff** — `sync-repos`, `handoff`
+- **Skill authoring** — `write-a-skill`, `setup-matt-pocock-skills`
