@@ -1,16 +1,16 @@
 # CLAUDEW
 
-Run Claude Code agents fully autonomously in parallel, each sealed in its own
-Docker container. Because every worker is a self-contained sandbox that can't
-touch your host or the others, you can hand it `--dangerously-skip-permissions`
-and let it work end to end — no permission prompts, no babysitting, no risk to
-your machine. Launch and color-code them all from a single `open.sh`.
+Run multiple Claude Code agents in parallel, each sealed in its own Docker
+container. Because every worker is a self-contained sandbox that can't touch
+your host or the others, you can hand it `--dangerously-skip-permissions` and
+let it work without permission prompts — no babysitting, no risk to your
+machine. Launch and color-code them all from a single `open.sh`.
 
 > **This repo ships tuned to my own preferences and tech stack** — Java/Quarkus
 > rules, GitHub flow, iTerm2 launcher, the specific skills and coding standards
 > in `./config/` and `./skills/`. None of it is load-bearing. Swap the config
 > files, drop or add skills, change the base image in `docker/Dockerfile` to
-> whatever language and tooling you use. The core idea — autonomous Claude Code
+> whatever language and tooling you use. The core idea — multiple Claude Code
 > agents running in parallel, each sealed in its own throwaway sandbox — and the
 > advantages that come with it stay exactly the same whoever you are.
 
