@@ -1,3 +1,3 @@
 # CLAUDEW
 
-@config/CLAUDE.md
+@home/.claude/CLAUDE.md

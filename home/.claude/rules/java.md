@@ -1,6 +1,13 @@
+---
+paths:
+  - "**/*.java"
+  - "**/pom.xml"
+  - "**/application*.yaml"
+---
+
 # Java
 
-Java/Jakarta-specific rules. Apply only in Java repos.
+Java/Jakarta-specific rules.
 
 ## Code style
 

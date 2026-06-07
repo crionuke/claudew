@@ -22,10 +22,11 @@ fi
 # Workspace dir — where Claude sessions are rooted
 mkdir -p "$HOME/workspace"
 
-# Global workspace config (CLAUDE.md, etc.) — baked into the image, refreshed on every start.
-CONFIG_SRC=/opt/claudew/config
-if [ -d "$CONFIG_SRC" ]; then
-    cp -af "$CONFIG_SRC"/. "$HOME/workspace/"
+# Home skeleton — baked into the image, overlaid onto $HOME on every start.
+# ~/.claude/CLAUDE.md + ~/.claude/rules/ load as user instructions across every repo; ~/docs/ holds reference docs pulled in on demand.
+HOME_SKEL=/opt/claudew/home
+if [ -d "$HOME_SKEL" ]; then
+    cp -af "$HOME_SKEL"/. "$HOME/"
 fi
 
 # Copy baked-in project skills into ~/.claude/skills, refreshed on every start.
