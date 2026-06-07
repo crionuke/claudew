@@ -17,6 +17,11 @@ your machine. Launch and color-code them all from a single `open.sh`.
   refactor running in one agent while you build the actual feature in another.
 - **Fire and forget** — inside the safe sandbox an agent takes a task all the
   way to a PR on its own, no approvals or babysitting; walk away or go to sleep.
+- **Ship a change across repos at once** — hand one agent a cross-cutting task
+  and let it edit every affected repo in its workspace and open a PR in each.
+- **Bootstrap new projects from your own** — let an agent scaffold a fresh repo
+  and fill it in, mirroring the structure and conventions of the projects
+  already in its workspace.
 
 ## Usage
 
