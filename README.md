@@ -27,20 +27,16 @@ argument to print usage. Extra args after the flag are passed through to
 
 Workspaces: `./volumes/worker_a`, `./volumes/worker_b`, `./volumes/worker_c`.
 
-## Config
+## Agent rules
 
-Shared instructions that govern how every agent behaves across every repo.
-Files under `./config/` are baked into the image and copied into each worker's
-`~/workspace/` on every start, so all workers stay in sync and edits land on
-the next restart. Because they live at the workspace root, a per-repo
-`CLAUDE.md` (or `triage-labels.md`, etc.) overrides them on conflict.
+Shared instructions in `./config/` that every worker follows across every repo,
+copied into each `~/workspace/` on start. A per-repo file of the same name wins.
 
-- **`CLAUDE.md`** — the master ruleset: response tone, repo layout, the
-  branch → PR → merge flow, and coding standards. Pulls in the files below.
-- **`pull-requests.md`** — how to open, check, and squash-merge PRs with `gh`.
-- **`issue-tracker.md`** — using GitHub Issues for issues and PRDs via `gh`.
-- **`triage-labels.md`** — canonical triage roles and their default label strings.
-- **`java-rules.md`** — Java/Jakarta coding rules, applied only in Java repos.
+- **`CLAUDE.md`** — master ruleset (tone, repo layout, PR flow, coding standards).
+- **`pull-requests.md`** — opening, checking, and merging PRs with `gh`.
+- **`issue-tracker.md`** — GitHub Issues for issues and PRDs.
+- **`triage-labels.md`** — triage roles and their default labels.
+- **`java-rules.md`** — Java/Jakarta rules, applied only in Java repos.
 
 ## Skills
 
