@@ -6,27 +6,23 @@ touch your host or the others, you can hand it `--dangerously-skip-permissions`
 and let it work end to end — no permission prompts, no babysitting, no risk to
 your machine. Launch and color-code them all from a single `open.sh`.
 
-## Setup
+## Usage
 
 ```bash
 git clone https://github.com/crionuke/claudew.git
 cd claudew
-cp .env.sample .env          # set GIT_USER_NAME, GIT_USER_EMAIL, GH_TOKEN, CONTEXT7_API_KEY
-docker compose up -d --build # build images and start the workers
+cp .env.sample .env   # set GIT_USER_NAME, GIT_USER_EMAIL, GH_TOKEN, CONTEXT7_API_KEY
+
+./open.sh -i          # all three, each in its own iTerm2 tab
+./open.sh -a          # only worker_a (red)
+./open.sh -b          # only worker_b (green)
+./open.sh -c          # only worker_c (blue)
 ```
 
-## Run
-
-```bash
-./open.sh -i   # all three, each in its own iTerm2 tab
-./open.sh -a   # only worker_a (red)
-./open.sh -b   # only worker_b (green)
-./open.sh -c   # only worker_c (blue)
-```
-
-`-i` opens three iTerm2 tabs (A, B, C), each running its worker. `-a`, `-b`, or
-`-c` runs a single worker session in the current terminal. Run with no argument
-to print usage. Extra args after the flag are passed through to `claudew`.
+`open.sh` builds and starts each worker on demand. `-i` opens three iTerm2 tabs
+(A, B, C), each running its worker; `-a`, `-b`, or `-c` runs a single worker in
+the current terminal. Run with no argument to print usage. Extra args after the
+flag are passed through to `claudew`.
 
 Workspaces: `./volumes/worker_a`, `./volumes/worker_b`, `./volumes/worker_c`.
 
