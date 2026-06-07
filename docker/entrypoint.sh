@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
+# Readiness marker — consumed by the compose healthcheck so `docker compose exec`
+# doesn't race the setup steps below. Cleared on start, written just before exec.
+READY_MARKER=/opt/claudew/.ready
+rm -f "$READY_MARKER"
+
 # SSH key — generated on first run so it lives inside whatever is mounted at $HOME
 if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
     mkdir -p "$HOME/.ssh"
@@ -19,9 +24,6 @@ if [ ! -f "$HOME/.gitconfig" ]; then
     git config --global init.defaultBranch main
 fi
 
-# Workspace dir — where Claude sessions are rooted
-mkdir -p "$HOME/workspace"
-
 # Home skeleton — baked into the image, overlaid onto $HOME on every start.
 # ~/.claude/CLAUDE.md + ~/.claude/rules/ load as user instructions across every repo; ~/docs/ holds reference docs pulled in on demand.
 # Baked-in skills are removed first so the overlay writes them fresh (drops files deleted upstream); user-created skills with other names survive.
@@ -33,5 +35,7 @@ if [ -d "$HOME_SKEL" ]; then
     done
     cp -af "$HOME_SKEL"/. "$HOME/"
 fi
+
+touch "$READY_MARKER"
 
 exec "$@"

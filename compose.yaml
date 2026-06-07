@@ -19,6 +19,9 @@ x-worker: &worker
     - "host.docker.internal:host-gateway"
   networks:
     - network
+  healthcheck:
+    test: ["CMD", "test", "-f", "/opt/claudew/.ready"]
+    interval: 1s
 
 services:
   worker_a:
