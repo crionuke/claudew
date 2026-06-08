@@ -67,7 +67,6 @@ ENV SDKMAN_DIR=/opt/sdkman
 RUN curl -s "https://get.sdkman.io?rcupdate=false" | bash \
     && source "$SDKMAN_DIR/bin/sdkman-init.sh" \
     && sdk install java 25-tem \
-    && sdk install java 21-tem \
     && sdk default java 25-tem \
     && sdk install quarkus \
     && sdk flush \
