@@ -8,10 +8,10 @@ usage() {
     cat <<EOF
 usage: open.sh (-i | -a | -b | -c)
 
-  -i       open worker_a, worker_b and worker_c, each in its own iTerm tab
-  -a       run only the worker_a session in the current terminal
-  -b       run only the worker_b session in the current terminal
-  -c       run only the worker_c session in the current terminal
+  -i   open all workers in iTerm tabs
+  -a   run worker A here
+  -b   run worker B here
+  -c   run worker C here
 EOF
 }
 
