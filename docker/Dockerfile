@@ -57,9 +57,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 # Claude Code
 RUN npm install -g @anthropic-ai/claude-code
 
-# `claudew` wrapper — runs `claude --dangerously-skip-permissions` from ~/workspace
-RUN printf '#!/usr/bin/env bash\ncd "$HOME/workspace"\nexec claude --dangerously-skip-permissions "$@"\n' > /usr/local/bin/claudew \
-    && chmod +x /usr/local/bin/claudew
+# `claudew` wrapper — runs `claude --dangerously-skip-permissions` from ~/workspace,
+# enabling Remote Control when CLAUDEW_RC=true (prefix derived from the worker hostname)
+COPY docker/claudew /usr/local/bin/claudew
+RUN chmod +x /usr/local/bin/claudew
 
 # SDKMAN + Java 25 (Temurin) + Quarkus CLI — installed under /opt so a bind-mount over $HOME doesn't shadow it
 ENV SDKMAN_DIR=/opt/sdkman

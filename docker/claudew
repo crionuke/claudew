@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+cd "$HOME/workspace"
+
+rc_args=()
+if [ "${CLAUDEW_RC:-false}" = "true" ]; then
+    worker="$(hostname)"
+    prefix="${worker##*_}"
+    rc_args=(--remote-control --remote-control-session-name-prefix "${prefix^^}:")
+fi
+
+exec claude --dangerously-skip-permissions "${rc_args[@]}" "$@"
