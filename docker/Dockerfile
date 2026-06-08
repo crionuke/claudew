@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         wget \
         gnupg \
         git \
+        jq \
         unzip \
         zip \
         bash \
