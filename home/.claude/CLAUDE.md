@@ -20,7 +20,7 @@ Clone into `~/workspace/<owner>/<repo>` mirroring the GitHub path (e.g. `OMGSERV
 ## Branching and PRs
 
 1. Branch off the default — never commit to it directly.
-2. Push and open a PR against the default branch with `gh pr create`.
+2. Push and open a PR against the default branch with `gh pr create`. Always show the PR link in your response.
 3. Monitor checks to completion (`gh pr checks --watch`); fix failures and address review comments. Never walk away.
 4. Squash-merge (`gh pr merge --squash`) only once **all checks pass** and **all review comments are resolved**.
 5. If asked to push to the default branch, do it and monitor its workflow runs the same way.
