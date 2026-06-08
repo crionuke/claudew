@@ -23,10 +23,10 @@ single `open.sh`.
 ## Use cases
 
 - **Parallelize one backlog** — several agents on different issues in one repo, each with its own clone and PR.
-- **Juggle several projects** — one agent per repo, one tab each.
-- **Long background jobs** — park a migration or big refactor in one agent while you build in another.
 - **Hand off, then review** — an agent goes all the way to a PR; you keep review and merge.
 - **Cross-repo changes** — one agent edits every affected repo and opens a PR in each.
+- **Juggle several projects** — one agent per repo, one tab each.
+- **Long background jobs** — park a migration or big refactor in one agent while you build in another.
 - **Bootstrap new projects** — an agent scaffolds a fresh repo following your existing conventions.
 
 ## Usage
@@ -41,14 +41,14 @@ cp .env.sample .env   # set GIT_USER_NAME, GIT_USER_EMAIL, GH_TOKEN, CONTEXT7_AP
 
 `open.sh` builds and starts each worker on demand. `-i` opens every agent in its
 own iTerm2 tab. To run a single agent in the current terminal, use `-a`, `-b`,
-or `-c` (red, green, blue). Run with no argument to print usage.
+or `-c`. Run with no argument to print usage.
 
 ## Rules and skills
 
-`./home/` is a skeleton overlaid onto each worker's `$HOME` on start, so
-`~/workspace/` stays repos-only. It carries the master ruleset, path-scoped
-rules, skills, and reference docs. Drop in your own files to change any of it; a
-per-repo file of the same name wins.
+`./home/` is a skeleton overlaid onto each worker's `$HOME` on start. It carries
+the master ruleset, path-scoped rules, skills, and reference docs — everything
+config-like lives there, while `~/workspace/` holds only your git clones. Drop
+in your own files to change any of it; per-repo rules win on conflict.
 
 ## Stack
 
