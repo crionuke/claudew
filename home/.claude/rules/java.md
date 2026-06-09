@@ -7,7 +7,7 @@ paths:
 
 # Java
 
-Java/Jakarta-specific rules.
+Java-specific rules.
 
 ## Code style
 
@@ -16,7 +16,7 @@ Java/Jakarta-specific rules.
 - Short class field names when the type disambiguates: `PlayerService players`, not `playerService`
 - Getter-style service methods: `players.getPlayer(id)`, not `players.player(id)`
 - Java Stream API over `for`/`while` loops for collection iteration and transformation
-- `@ApplicationScoped` on services and repositories (Jakarta)
+- `@ApplicationScoped` on services and repositories
 - `Dto` suffix for inter-layer carriers; `Request`/`Response` for HTTP bodies. Endpoint scope lives in the package.
 - `Spec` suffix for transient creation payloads passed to `service.create(...)`. `Config` suffix for developer-supplied
   JSON blobs persisted on an entity (JSONB column).
