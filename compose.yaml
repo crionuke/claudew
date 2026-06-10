@@ -48,5 +48,13 @@ services:
       - ./volumes/worker_c:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
+  worker_d:
+    <<: *worker
+    container_name: worker_d
+    hostname: worker_d
+    volumes:
+      - ./volumes/worker_d:/claudew
+      - /var/run/docker.sock:/var/run/docker.sock
+
 networks:
   network:
