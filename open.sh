@@ -6,12 +6,13 @@ DIR="$(pwd)"
 
 usage() {
     cat <<EOF
-usage: open.sh (-i | -A | -B | -C)
+usage: open.sh (-i | -A | -B | -C | -D)
 
   -i   open all workers in iTerm tabs
   -A   run worker A here
   -B   run worker B here
   -C   run worker C here
+  -D   run worker D here
 EOF
 }
 
@@ -22,6 +23,7 @@ run_worker() {
         a) name=A; service=worker_a; tab=B82D2D; cursor=D85454; bg=1F0808 ;;
         b) name=B; service=worker_b; tab=2D8B3F; cursor=5AC272; bg=091911 ;;
         c) name=C; service=worker_c; tab=2D5FA8; cursor=4A8BC2; bg=0A1929 ;;
+        d) name=D; service=worker_d; tab=A8A82D; cursor=C2C24A; bg=292910 ;;
     esac
 
     printf '\033]1337;SetColors=tab=%s\007' "$tab"
@@ -55,6 +57,10 @@ tell application "iTerm2"
         tell current session of tab_c
             write text "exec '$DIR/open.sh' -C"
         end tell
+        set tab_d to (create tab with default profile)
+        tell current session of tab_d
+            write text "exec '$DIR/open.sh' -D"
+        end tell
     end tell
 end tell
 EOF
@@ -70,6 +76,7 @@ case "$1" in
     -A) run_worker a ;;
     -B) run_worker b ;;
     -C) run_worker c ;;
+    -D) run_worker d ;;
     -h|--help) usage ;;
     *) echo "unknown option: $1" >&2; usage >&2; exit 1 ;;
 esac
