@@ -36,6 +36,13 @@ if [ -d "$HOME_SKEL" ]; then
     cp -af "$HOME_SKEL"/. "$HOME/"
 fi
 
+# Port forwarding — bridge the worker's localhost to the host gateway so tools that assume a
+# service on localhost reach a stack whose ports are published on the host (e.g. one brought up
+# via env/run.sh). Listed in FORWARDED_PORTS; off when unset.
+for port in ${FORWARDED_PORTS:-}; do
+    socat TCP-LISTEN:"$port",fork,reuseaddr TCP:host.docker.internal:"$port" &
+done
+
 touch "$READY_MARKER"
 
 exec "$@"
