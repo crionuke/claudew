@@ -42,17 +42,3 @@ cp .env.sample .env   # set GIT_USER_NAME, GIT_USER_EMAIL, GH_TOKEN, CONTEXT7_AP
 `open.sh` builds and starts each worker on demand. `-i` opens every agent in its
 own iTerm2 tab. To run a single agent in the current terminal, use `-A`, `-B`,
 `-C`, or `-D`. Run with no argument to print usage.
-
-## Rules and skills
-
-`./home/` is a skeleton overlaid onto each worker's `$HOME` on start. It carries
-the master ruleset, path-scoped rules, skills, and reference docs — everything
-config-like lives there, while `~/workspace/` holds only your git clones. Drop
-in your own files to change any of it; per-repo rules win on conflict.
-
-## Stack
-
-- Ubuntu 24.04, Node.js 22, Claude Code
-- Java 25 + 21 (Temurin, 25 default) + Quarkus CLI via SDKMAN
-- `gh`, `docker` CLI (Compose + Buildx plugins)
-- Per-worker SSH key + git identity
