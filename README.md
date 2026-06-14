@@ -2,6 +2,8 @@
 
 *Built to collaborate, not to work autonomously.*
 
+![CLAUDEW](cover.png)
+
 Run multiple Claude Code agents in parallel, each sealed in its own color-coded
 Docker sandbox loaded with **your** dev tools, rules, and skills. Since a sandbox
 can't touch your host or the other agents, you can run it with
