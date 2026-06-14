@@ -38,6 +38,7 @@ run_worker() {
 }
 
 open_all() {
+    docker compose build
     osascript <<EOF
 tell application "iTerm2"
     activate
