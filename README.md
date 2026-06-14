@@ -7,8 +7,7 @@ Docker sandbox loaded with **your** dev tools, rules, and skills. Since a sandbo
 can't touch your host or the other agents, you can run it with
 `--dangerously-skip-permissions` and let it work without gating each step — you
 still review and merge. Each agent carries a multi-repo workspace, so it can take
-a cross-cutting task across every affected repo and open a PR in each. Launch and
-color-code them all from a single `open.sh`.
+a cross-cutting task across every affected repo and open a PR in each.
 
 > **This repo ships tuned to my own stack** — Java/Quarkus, GitHub flow, iTerm2,
 > and the skills in `./home/`. None of it is load-bearing: swap the home-skeleton
