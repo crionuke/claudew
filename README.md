@@ -31,11 +31,10 @@ single `open.sh`.
 
 ## Usage
 
-```bash
-git clone https://github.com/crionuke/claudew.git
-cd claudew
-cp .env.sample .env   # set GIT_USER_NAME, GIT_USER_EMAIL, GH_TOKEN, CONTEXT7_API_KEY
+Clone the repo and fill in `.env` using `.env.sample` as a template. Then launch
+the agents:
 
+```bash
 ./open.sh -i          # all agents, each in its own iTerm2 tab
 ```
 
