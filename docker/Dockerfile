@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         locales \
         tzdata \
         sudo \
+        socat \
         openssh-client \
         openssh-server \
     && locale-gen en_US.UTF-8 \
