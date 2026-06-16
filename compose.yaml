@@ -13,6 +13,11 @@ x-worker: &worker
   stdin_open: true
   tty: true
   working_dir: /claudew
+  deploy:
+    resources:
+      limits:
+        cpus: "1"
+        memory: 3g
   env_file:
     - .env
   extra_hosts:
