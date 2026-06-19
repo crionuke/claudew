@@ -17,12 +17,10 @@ Clone into `~/workspace/<owner>/<repo>` mirroring the GitHub path (e.g. `OMGSERV
 
 ## Starting a task
 
-- Before a new task, start from a clean default branch.
-- If the working tree is dirty or you're not on the default branch, summarize the leftover changes and ask before
-  cleaning.
-- Discard only on explicit approval; if refused, ask whether to commit, stash, or build on top — never silently work
-  over stale changes.
-- Skip this when the changes belong to the task at hand — that's a continuation, not a new task.
+- Start a new task from a clean default branch.
+- Dirty tree or not on default? Summarize the leftover changes, ask before cleaning.
+- Discard only on explicit OK. If refused, ask: commit, stash, or build on top.
+- Skip if the changes belong to the current task — that's a continuation.
 
 ## Branching and PRs
 
