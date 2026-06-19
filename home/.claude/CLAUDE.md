@@ -15,6 +15,13 @@ ambiguous, ask — never guess. From outside a clone, pass `--repo owner/name`. 
 Clone into `~/workspace/<owner>/<repo>` mirroring the GitHub path (e.g. `OMGSERVERS/omgserver` →
 `~/workspace/OMGSERVERS/omgserver`).
 
+## Starting a task
+
+Before a new task, start from a clean default branch. If the working tree is dirty or you're not on the default branch,
+summarize the leftover changes and ask before cleaning. Discard only on explicit approval; if refused, ask whether to
+commit, stash, or build on top — never silently work over stale changes. Skip this when the changes belong to the task at
+hand — that's a continuation, not a new task.
+
 ## Branching and PRs
 
 1. Branch off the default — never commit to it directly.
@@ -54,7 +61,5 @@ Language-agnostic rules. Apply everywhere.
 
 #### Code style
 
-- No code comments — code must be self-documenting via clear naming, except in tests where comments document intent,
-  scenarios, and edge cases
-- Hard-wrap prose in Markdown and text docs at a maximum of 120 characters. Don't reflow code, URLs, tables, or fenced
-  code blocks
+- No code comments — code must be self-documenting via clear naming
+- Hard-wrap prose in Markdown/text at 120 chars. Don't reflow code, URLs, tables, or fenced blocks.
