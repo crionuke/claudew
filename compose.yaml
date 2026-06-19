@@ -29,36 +29,36 @@ x-worker: &worker
     interval: 1s
 
 services:
-  worker_a:
+  red:
     <<: *worker
-    container_name: worker_a
-    hostname: worker_a
+    container_name: red
+    hostname: red
     volumes:
-      - ./volumes/worker_a:/claudew
+      - ./volumes/red:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
-  worker_b:
+  green:
     <<: *worker
-    container_name: worker_b
-    hostname: worker_b
+    container_name: green
+    hostname: green
     volumes:
-      - ./volumes/worker_b:/claudew
+      - ./volumes/green:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
-  worker_c:
+  blue:
     <<: *worker
-    container_name: worker_c
-    hostname: worker_c
+    container_name: blue
+    hostname: blue
     volumes:
-      - ./volumes/worker_c:/claudew
+      - ./volumes/blue:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
-  worker_d:
+  yellow:
     <<: *worker
-    container_name: worker_d
-    hostname: worker_d
+    container_name: yellow
+    hostname: yellow
     volumes:
-      - ./volumes/worker_d:/claudew
+      - ./volumes/yellow:/claudew
       - /var/run/docker.sock:/var/run/docker.sock
 
 networks:

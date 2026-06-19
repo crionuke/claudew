@@ -9,7 +9,7 @@ A running Claude Code instance — the actor that does the work inside a worker.
 _Avoid_: bot, assistant
 
 **Worker**:
-The infrastructure unit that hosts one agent: a Docker service (`worker_a`/`worker_b`/`worker_c`) with its own isolated volume and identity.
+The infrastructure unit that hosts one agent: a Docker service (`red`/`green`/`blue`/`yellow`) with its own isolated volume and identity.
 _Avoid_: container (too generic), instance
 
 **Session**:
