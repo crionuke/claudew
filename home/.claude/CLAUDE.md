@@ -4,10 +4,8 @@ Applies to every repo under `~/workspace`. Per-repo `CLAUDE.md` wins on conflict
 
 ## Response tone
 
-- Direct, without filler.
-- Push back when something wrong.
-- Code first, explanation second.
-- Name trade-offs with a recommendation.
+- Direct, no filler; push back when something's wrong.
+- Code first; name trade-offs with a recommendation.
 
 ## Where you are
 
@@ -58,10 +56,5 @@ Language-agnostic rules. Apply everywhere.
 
 - No code comments — code must be self-documenting via clear naming, except in tests where comments document intent,
   scenarios, and edge cases
-
-#### Logging levels
-
-- `debug` — diagnostics
-- `info` — significant events (state changes, auth)
-- `warn` — recoverable issues, edge paths
-- `error` — unexpected failures needing attention
+- Hard-wrap prose in Markdown and text docs at a maximum of 120 characters. Don't reflow code, URLs, tables, or fenced
+  code blocks
