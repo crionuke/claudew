@@ -6,13 +6,13 @@ DIR="$(pwd)"
 
 usage() {
     cat <<EOF
-usage: open.sh (-i | -A | -B | -C | -D)
+usage: open.sh (-i | -R | -G | -B | -Y)
 
   -i   open all workers in iTerm tabs
-  -A   run worker A here
+  -R   run worker R here
+  -G   run worker G here
   -B   run worker B here
-  -C   run worker C here
-  -D   run worker D here
+  -Y   run worker Y here
 EOF
 }
 
@@ -20,10 +20,10 @@ run_worker() {
     local id="$1"
     local name service tab cursor bg
     case "$id" in
-        a) name=A; service=worker_a; tab=B82D2D; cursor=D85454; bg=1F0808 ;;
-        b) name=B; service=worker_b; tab=2D8B3F; cursor=5AC272; bg=091911 ;;
-        c) name=C; service=worker_c; tab=2D5FA8; cursor=4A8BC2; bg=0A1929 ;;
-        d) name=D; service=worker_d; tab=A8A82D; cursor=C2C24A; bg=292910 ;;
+        r) name=R; service=red; tab=B82D2D; cursor=D85454; bg=1F0808 ;;
+        g) name=G; service=green; tab=2D8B3F; cursor=5AC272; bg=091911 ;;
+        b) name=B; service=blue; tab=2D5FA8; cursor=4A8BC2; bg=0A1929 ;;
+        y) name=Y; service=yellow; tab=A8A82D; cursor=C2C24A; bg=292910 ;;
     esac
 
     printf '\033]1337;SetColors=tab=%s\007' "$tab"
@@ -46,21 +46,21 @@ tell application "iTerm2"
         create window with default profile
     end if
     tell current window
-        set tab_a to (create tab with default profile)
-        tell current session of tab_a
-            write text "exec '$DIR/open.sh' -A"
+        set tab_r to (create tab with default profile)
+        tell current session of tab_r
+            write text "exec '$DIR/open.sh' -R"
+        end tell
+        set tab_g to (create tab with default profile)
+        tell current session of tab_g
+            write text "exec '$DIR/open.sh' -G"
         end tell
         set tab_b to (create tab with default profile)
         tell current session of tab_b
             write text "exec '$DIR/open.sh' -B"
         end tell
-        set tab_c to (create tab with default profile)
-        tell current session of tab_c
-            write text "exec '$DIR/open.sh' -C"
-        end tell
-        set tab_d to (create tab with default profile)
-        tell current session of tab_d
-            write text "exec '$DIR/open.sh' -D"
+        set tab_y to (create tab with default profile)
+        tell current session of tab_y
+            write text "exec '$DIR/open.sh' -Y"
         end tell
     end tell
 end tell
@@ -74,10 +74,10 @@ fi
 
 case "$1" in
     -i) open_all ;;
-    -A) run_worker a ;;
+    -R) run_worker r ;;
+    -G) run_worker g ;;
     -B) run_worker b ;;
-    -C) run_worker c ;;
-    -D) run_worker d ;;
+    -Y) run_worker y ;;
     -h|--help) usage ;;
     *) echo "unknown option: $1" >&2; usage >&2; exit 1 ;;
 esac

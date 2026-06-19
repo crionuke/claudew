@@ -35,5 +35,5 @@ the agents:
 ```
 
 `open.sh` builds and starts each worker on demand. `-i` opens every agent in its
-own iTerm2 tab. To run a single agent in the current terminal, use `-A`, `-B`,
-`-C`, or `-D`. Run with no argument to print usage.
+own iTerm2 tab. To run a single agent in the current terminal, use `-R`, `-G`,
+`-B`, or `-Y`. Run with no argument to print usage.

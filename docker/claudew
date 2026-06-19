@@ -4,7 +4,7 @@ cd "$HOME/workspace"
 rc_args=()
 if [ "${CLAUDEW_RC:-false}" = "true" ]; then
     worker="$(hostname)"
-    prefix="${worker##*_}"
+    prefix="${worker:0:1}"
     rc_args=(--remote-control --remote-control-session-name-prefix "${prefix^^}:")
 fi
 
