@@ -54,6 +54,11 @@ overrides allowed. See `~/docs/triage-labels.md`.
 - Before writing third-party code (any library, framework, SDK, or CLI), verify the API via the `find-docs` skill. Skip
   for own logic and stdlib.
 
+### Testing
+
+- When writing tests for a Quarkus web service, follow `~/docs/quarkus-testing.md`. A repo keeps only its own bindings
+  in its local `docs/agents/testing.md` and points there.
+
 ### Git commits
 
 - Never add Co-Authored-By lines to git commit messages
