@@ -36,6 +36,19 @@ if [ -d "$HOME_SKEL" ]; then
     cp -af "$HOME_SKEL"/. "$HOME/"
 fi
 
+# Status line — point Claude Code at the baked status line so every session shows the worker dir,
+# model, and live context-window usage; merged into settings.json so other settings survive.
+SETTINGS_FILE="$HOME/.claude/settings.json"
+STATUS_LINE="$(jq -n --arg cmd "$HOME/.claude/statusline.sh" '{type: "command", command: $cmd}')"
+mkdir -p "$HOME/.claude"
+if [ -f "$SETTINGS_FILE" ]; then
+    TMP_SETTINGS="$(mktemp)"
+    jq --argjson sl "$STATUS_LINE" '.statusLine = $sl' "$SETTINGS_FILE" > "$TMP_SETTINGS"
+    mv "$TMP_SETTINGS" "$SETTINGS_FILE"
+else
+    jq -n --argjson sl "$STATUS_LINE" '{statusLine: $sl}' > "$SETTINGS_FILE"
+fi
+
 # Port forwarding — bridge the worker's localhost to the host gateway so tools that assume a
 # service on localhost reach a stack whose ports are published on the host (e.g. one brought up
 # via env/run.sh). Listed in FORWARDED_PORTS; off when unset.
