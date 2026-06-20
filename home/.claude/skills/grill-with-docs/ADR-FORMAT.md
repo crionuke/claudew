@@ -21,7 +21,7 @@ An ADR is a decision stated as a title, then 2–4 short labeled sections that d
 A real example:
 
 ```md
-# Servers scale by replication, not clustering
+# Servers scale by replication
 
 ## Isolation
 Each `Server` is one omgserver process that holds its own state and the long-lived `Player`/`Instance` websocket
@@ -36,6 +36,15 @@ coordination.
 ```
 
 When a decision has a single facet, one labeled section — or a single short paragraph under the title — is enough.
+
+## Content
+
+An ADR records only the decision, as a directive to follow. State it and its facets in the present tense, as
+established fact. No context, rationale, or rejected alternatives — just what must hold. Negative statements are
+fine when they are a direct property of the decision (an invariant, a prohibition, a boundary).
+
+Never reference prior or superseded decisions, earlier versions of the ADR, or how the decision evolved. When a
+decision changes, rewrite the ADR so it reads as if written from scratch.
 
 ## Title
 
@@ -67,18 +76,18 @@ Scan `docs/adr/` for the highest existing number and increment by one.
 
 ## When to offer an ADR
 
-Offer an ADR when all three hold:
+Offer an ADR when all three hold. These decide *whether* a decision is worth an ADR; the ADR itself still records
+only the decision, never the reasoning behind it.
 
 1. **Hard to reverse** — the cost of changing your mind later is meaningful.
-2. **Surprising without context** — a future reader will look at the code and wonder why it was done this way.
-3. **The result of a real trade-off** — there were genuine alternatives and one was chosen for specific reasons.
+2. **Not obvious from the code** — a future reader could not infer the rule by reading the codebase.
+3. **One of several viable paths** — the choice is not forced, so it must be pinned down to stay consistent.
 
 ### What qualifies
 
-- **Architectural shape.** "The write model is event-sourced, the read model is projected into Postgres."
-- **Integration patterns between contexts.** "Ordering and Billing communicate via domain events, not synchronous HTTP."
+- **Architectural shape.** "The write model is event-sourced; the read model is projected into Postgres."
+- **Integration patterns between contexts.** "Ordering and Billing communicate via domain events."
 - **Technology choices that carry lock-in.** Database, message bus, auth provider, deployment target — the ones that would take a quarter to swap out.
 - **Boundary and scope decisions.** "Customer data is owned by the Customer context; other contexts reference it by ID only."
-- **Deliberate deviations from the obvious path.** "We use manual SQL instead of an ORM because X."
-- **Constraints not visible in the code.** "Response times must be under 200ms because of the partner API contract."
-- **Rejected alternatives worth remembering.** If GraphQL was considered and REST chosen for subtle reasons, record it so the question settles.
+- **Deliberate deviations from the obvious path.** "Data access uses hand-written SQL."
+- **Constraints not visible in the code.** "Responses complete within 200ms."
