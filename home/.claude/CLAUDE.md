@@ -56,8 +56,7 @@ overrides allowed. See `~/docs/triage-labels.md`.
 
 ### Testing
 
-- When writing tests for a Quarkus web service, follow `~/docs/quarkus-testing.md`. A repo keeps only its own bindings
-  in its local `docs/agents/testing.md` and points there.
+- When writing tests for a Quarkus web service, follow `~/docs/quarkus-testing.md`.
 
 ### Git commits
 
