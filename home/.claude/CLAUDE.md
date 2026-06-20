@@ -63,3 +63,14 @@ Language-agnostic rules. Apply everywhere.
 
 - No code comments — code must be self-documenting via clear naming
 - Hard-wrap prose in Markdown/text at 120 chars. Don't reflow code, URLs, tables, or fenced blocks.
+
+## Documentation
+
+Applies to all state-describing docs: `CONTEXT.md`, ADRs, `README`, guides, design docs, and docs next to code.
+
+- **Document the target state.** Describe what must hold, in the present tense, as established fact. Negative
+  statements are fine when they are a direct property of that state (an invariant, a prohibition, a boundary).
+- **No history, no back-references.** Don't reference prior or overwritten versions, decisions, or the document's
+  evolution, and don't justify anything through rejected alternatives ("previously", "instead of the old approach",
+  "as decided in #N"). When revising a fragment, rewrite it so it reads as if written from scratch.
+- ADRs follow this too: record only the decision as a directive to follow — no context, rationale, or alternatives.
