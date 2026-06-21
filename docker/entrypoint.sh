@@ -26,12 +26,16 @@ fi
 
 # Home skeleton — baked into the image, overlaid onto $HOME on every start.
 # ~/.claude/CLAUDE.md + ~/.claude/rules/ load as user instructions across every repo; ~/docs/ holds reference docs pulled in on demand.
-# Baked-in skills are removed first so the overlay writes them fresh (drops files deleted upstream); user-created skills with other names survive.
+# Baked-in skills and subagents are removed first so the overlay writes them fresh (drops files deleted upstream); user-created ones with other names survive.
 HOME_SKEL=/opt/claudew/home
 if [ -d "$HOME_SKEL" ]; then
     for skill in "$HOME_SKEL"/.claude/skills/*/; do
         [ -d "$skill" ] || continue
         rm -rf "$HOME/.claude/skills/$(basename "$skill")"
+    done
+    for agent in "$HOME_SKEL"/.claude/agents/*; do
+        [ -f "$agent" ] || continue
+        rm -f "$HOME/.claude/agents/$(basename "$agent")"
     done
     cp -af "$HOME_SKEL"/. "$HOME/"
 fi

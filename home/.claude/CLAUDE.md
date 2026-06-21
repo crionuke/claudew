@@ -28,10 +28,11 @@ Clone into `~/workspace/<owner>/<repo>` mirroring the GitHub path (e.g. `OMGSERV
 
 1. Branch off the default — never commit to it directly.
 2. Push and open a PR against the default branch with `gh pr create`. Always show the PR link in your response.
-3. Monitor checks to completion (`gh pr checks --watch`); fix failures and address review comments. Never walk away.
-4. Squash-merge (`gh pr merge --squash`) only once **all checks pass** and **all review comments are resolved**.
-5. If asked to push to the default branch, do it and monitor its workflow runs the same way.
-6. Once the PR is merged or the branch has been pushed, check out the default branch and pull remote changes.
+3. Delegate the PR to the `pr-consistency-review` subagent with the PR link; resolve any `CHANGES REQUESTED` verdict before merging.
+4. Monitor checks to completion (`gh pr checks --watch`); fix failures and address review comments. Never walk away.
+5. Squash-merge (`gh pr merge --squash`) only once **all checks pass** and **all review comments are resolved**.
+6. If asked to push to the default branch, do it and monitor its workflow runs the same way.
+7. Once the PR is merged or the branch has been pushed, check out the default branch and pull remote changes.
 
 See `~/docs/pull-requests.md`.
 
