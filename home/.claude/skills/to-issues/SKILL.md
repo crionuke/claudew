@@ -7,6 +7,8 @@ description: Break a plan, spec, or PRD into independently-grabbable issues on t
 
 Break a plan into independently-grabbable issues using vertical slices (tracer bullets).
 
+**Always write published issues in English** — titles and body (What to build, Acceptance criteria, everything) must be in English, even when the plan, PRD, or the entire discussion is in another language. This applies only to the published issue content; your interaction with the user stays in the language of the conversation.
+
 The issue tracker and triage label vocabulary should have been provided to you — run `/setup-matt-pocock-skills` if not.
 
 ## Process
@@ -54,6 +56,8 @@ Iterate until the user approves the breakdown.
 For each approved slice, publish a new issue to the issue tracker. Use the issue body template below. These issues are considered ready for AFK agents, so publish them with the correct triage label unless instructed otherwise.
 
 Publish issues in dependency order (blockers first) so you can reference real issue identifiers in the "Blocked by" field.
+
+All issue content below must be written in English (see rule above).
 
 <issue-template>
 ## Parent
