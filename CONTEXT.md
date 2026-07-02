@@ -19,3 +19,7 @@ _Avoid_: tab, window
 **Subagent**:
 A single-purpose Claude Code actor that an Agent delegates to via the Task tool. Defined in `~/.claude/agents/` and baked into every worker alongside skills.
 _Avoid_: helper, bot
+
+**Rule**:
+A path-scoped coding directive that changed files must conform to. Lives as one Markdown file under `~/.claude/rules/`, its `paths` frontmatter selecting which files it governs. Baked into every worker alongside skills and subagents.
+_Avoid_: standard, convention, guideline
