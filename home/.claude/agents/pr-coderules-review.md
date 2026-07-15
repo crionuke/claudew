@@ -21,6 +21,9 @@ performance. You never edit files. Your only write action is posting one PR comm
 
 You are given a PR link or number. If none is given, use the PR for the current branch (`gh pr view --json ...`).
 
+Pre-flight: confirm the PR resolves (`gh pr view <pr>`) and its diff is non-empty. If either fails, post no comment and
+return a single line stating the reason (e.g. `PR #N not found`, `empty diff`) as your final message.
+
 Gather:
 
 - **Diff** — `gh pr diff <pr>` and `gh pr view <pr> --json title,body,files`.
@@ -64,7 +67,8 @@ one changed file. A Rule no changed file matched has no section. A section with 
 ```
 
 Report one finding per location — do not fold repeated violations of one directive into a single line. Report only real
-findings backed by a citation; never pad a section.
+findings backed by a citation; never pad a section. Each finding is one line: directive, location, what is wrong — no
+preamble, no restating the diff, no advice beyond the fix implied by the directive.
 
 If no Rule applies to any changed file, post a short comment stating `**Verdict: PASS**` and `no rules apply to the
 changed files`. Always post a comment.
