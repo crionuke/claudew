@@ -8,6 +8,10 @@ disable-model-invocation: true
 
 Break a plan, spec, or conversation into a set of **tickets** — tracer-bullet vertical slices, each declaring the tickets that **block** it.
 
+**Always write published tickets in English** — titles and body (What to build, Acceptance criteria, everything) must
+be in English, even when the plan, spec, or the entire discussion is in another language. This applies only to the
+published ticket content; your interaction with the user stays in the language of the conversation.
+
 The issue tracker and triage label vocabulary should have been provided to you — run `/setup-matt-pocock-skills` if not.
 
 ## Process
@@ -65,6 +69,8 @@ Publish the approved tickets. **How** depends on the tracker `/setup-matt-pocock
 Work the **frontier**: any ticket whose blockers are all done. For a purely linear chain that means top to bottom.
 
 Do NOT close or modify any parent issue.
+
+All ticket content below must be written in English (see rule above).
 
 <local-ticket-template>
 
