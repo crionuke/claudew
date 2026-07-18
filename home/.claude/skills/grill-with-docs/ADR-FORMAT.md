@@ -3,6 +3,22 @@
 ADRs live in `docs/adr/` and use sequential numbering: `0001-slug.md`, `0002-slug.md`, etc. A new ADR takes the
 highest existing number plus one. Create the directory lazily — only when the first ADR is needed.
 
+## What qualifies
+
+- Architectural shape: the structural pattern of the system — monorepo, event-sourced write model, projected read
+  model.
+- Integration patterns between contexts: how contexts talk — domain events, synchronous HTTP, shared storage.
+- Technology choices that carry lock-in: database, message bus, auth provider, deployment target — the ones that
+  take a quarter to swap out, not every library.
+- Boundary and scope decisions: who owns what data, who may reference it, and how; explicit prohibitions count as
+  much as permissions.
+- Constraints not visible in the code: compliance limits, contractual latency budgets, platform restrictions.
+
+## Scope
+
+An ADR records exactly one decision. A sentence whose removal leaves the title still true and complete records a
+separate decision and belongs in its own ADR.
+
 ## Shape
 
 An ADR is a decision stated as a title, then a single short paragraph of 1–3 sentences describing it. No sections,
@@ -23,22 +39,6 @@ Each `Server` is one omgserver process that holds its own state and the long-liv
 connections; no game state is shared between `Servers`. Scale and fault tolerance come from running more `Servers`.
 `User` identity is external to a `Server`, so a `User` may roam between `Servers`; an `Instance` does not.
 ```
-
-## Scope
-
-An ADR records exactly one decision. A sentence whose removal leaves the title still true and complete records a
-separate decision and belongs in its own ADR.
-
-## What qualifies
-
-- Architectural shape: the structural pattern of the system — monorepo, event-sourced write model, projected read
-  model.
-- Integration patterns between contexts: how contexts talk — domain events, synchronous HTTP, shared storage.
-- Technology choices that carry lock-in: database, message bus, auth provider, deployment target — the ones that
-  take a quarter to swap out, not every library.
-- Boundary and scope decisions: who owns what data, who may reference it, and how; explicit prohibitions count as
-  much as permissions.
-- Constraints not visible in the code: compliance limits, contractual latency budgets, platform restrictions.
 
 ## Content
 
