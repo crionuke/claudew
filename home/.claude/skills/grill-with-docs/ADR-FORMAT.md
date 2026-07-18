@@ -56,6 +56,15 @@ decision changes, rewrite the ADR so it reads as if written from scratch.
 The title states the decision itself as a sentence, in Sentence case. The filename slug mirrors it:
 `# Inputs validated at the entrypoint` → `0001-inputs-validated-at-the-entrypoint.md`.
 
+## Check
+
+Verify a draft against this list before saving:
+
+1. **Scope** — apply the removal test to every sentence: a sentence whose removal leaves the title still true and
+   complete moves to its own ADR.
+2. **Content** — every sentence states the rule itself; mechanics the code shows stay in the code.
+3. **Shape** — count the words; the body fits 60.
+
 ## Currency
 
 An ADR present in the repo is current and binding. There is no status field. To retire a decision, delete or

@@ -93,6 +93,9 @@ Only offer to create an ADR when all three are true:
 3. **One of several viable paths** — the choice is not forced, so it must be pinned down to stay consistent
 
 If any of the three is missing, skip the ADR. The ADR records only the decision as a directive — no context,
-rationale, or alternatives. Use the format in [ADR-FORMAT.md](ADR-FORMAT.md).
+rationale, or alternatives. Use the format in [ADR-FORMAT.md](ADR-FORMAT.md) and run its Check before saving.
+
+Write the ADR the moment its decision crystallises — one decision, one ADR; a single discussion branch may yield
+several small ADRs.
 
 </supporting-info>
