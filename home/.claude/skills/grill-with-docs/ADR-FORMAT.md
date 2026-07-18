@@ -5,15 +5,12 @@ highest existing number plus one. Create the directory lazily — only when the 
 
 ## Shape
 
-An ADR is a decision stated as a title, then 2–4 short labeled sections that describe that decision.
+An ADR is a decision stated as a title, then a single short paragraph of 1–3 sentences describing it. No sections,
+no frontmatter; 60 words at most. ADRs are small and dense.
 
 ```md
 # {The decision, stated as a sentence}
 
-## {Facet}
-{1–3 sentences.}
-
-## {Facet}
 {1–3 sentences.}
 ```
 
@@ -22,32 +19,34 @@ A real example:
 ```md
 # Servers scale by replication
 
-## Isolation
 Each `Server` is one omgserver process that holds its own state and the long-lived `Player`/`Instance` websocket
-connections. A `Server` shares no game state with any other `Server`.
-
-## Scale
-Scale and fault tolerance come from running more `Servers`: there is no shared cluster state and no cross-`Server`
-coordination.
-
-## Identity
+connections; no game state is shared between `Servers`. Scale and fault tolerance come from running more `Servers`.
 `User` identity is external to a `Server`, so a `User` may roam between `Servers`; an `Instance` does not.
 ```
 
-When a decision has a single facet, one labeled section — or a single short paragraph under the title — is enough.
-
 ## Scope
 
-An ADR records exactly one decision. Every section is a facet of that same decision: a facet whose removal leaves the
-title still true and complete is a separate decision and belongs in its own ADR.
+An ADR records exactly one decision. A sentence whose removal leaves the title still true and complete records a
+separate decision and belongs in its own ADR.
+
+## What qualifies
+
+- Architectural shape: the structural pattern of the system — monorepo, event-sourced write model, projected read
+  model.
+- Integration patterns between contexts: how contexts talk — domain events, synchronous HTTP, shared storage.
+- Technology choices that carry lock-in: database, message bus, auth provider, deployment target — the ones that
+  take a quarter to swap out, not every library.
+- Boundary and scope decisions: who owns what data, who may reference it, and how; explicit prohibitions count as
+  much as permissions.
+- Constraints not visible in the code: compliance limits, contractual latency budgets, platform restrictions.
 
 ## Content
 
-An ADR records only the decision, as a directive to follow. State it and its facets in the present tense, as
-established fact. No context, rationale, or rejected alternatives — just what must hold. Negative statements are
-fine when they are a direct property of the decision (an invariant, a prohibition, a boundary).
+An ADR records only the decision, as a directive to follow. State it in the present tense, as established fact. No
+context, rationale, or rejected alternatives — just what must hold. Negative statements are fine when they are a
+direct property of the decision (an invariant, a prohibition, a boundary).
 
-A facet states the rule; the code sites that implement it are the code's to show.
+The ADR states the rule; the code sites that implement it are the code's to show.
 
 Never reference prior or superseded decisions, earlier versions of the ADR, or how the decision evolved. When a
 decision changes, rewrite the ADR so it reads as if written from scratch.
@@ -57,16 +56,7 @@ decision changes, rewrite the ADR so it reads as if written from scratch.
 The title states the decision itself as a sentence, in Sentence case. The filename slug mirrors it:
 `# Inputs validated at the entrypoint` → `0001-inputs-validated-at-the-entrypoint.md`.
 
-## Sections
-
-Each section is labeled with a single noun (occasionally two words) naming a facet of this specific decision. Pick the
-labels that fit the decision at hand. Labels seen in practice, as a sample to draw from: `Boundary`, `Mechanism`,
-`Isolation`, `Scale`, `Identity`, `Scope`, `Routing`, `Lifecycle`, `Authorization`, `Contract`.
-
-Each section holds 1–3 sentences of tight prose. An ADR stays within 120 words across all sections, roughly 10–25
-lines wrapped at ~120 characters. ADRs are small and dense.
-
 ## Currency
 
-An ADR present in the repo is current and binding. There is no status field and no frontmatter. To retire a decision,
-delete or rewrite the ADR.
+An ADR present in the repo is current and binding. There is no status field. To retire a decision, delete or
+rewrite the ADR.
