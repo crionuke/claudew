@@ -14,7 +14,14 @@ Java-specific rules.
 ### Naming
 
 - Short class field names when the type disambiguates: `PlayerService players`, not `playerService`
-- Getter-style service methods: `players.getPlayer(id)`, not `players.player(id)`
+- Plural only for a service over many entities; a single-instance component stays singular: `SessionAssigner
+  sessionAssigner`, not `sessionAssigners`
+- `find` is a repository-level verb: only a `*Repository` names methods `find*`
+- Above the repository, a read is `get`/`list`: `get` returns at most one as `Optional`, `getRequired` returns one or
+  throws, `list` returns many
+- A store method omits the entity when its class already names it: `games.getBySlug(slug)`, not
+  `games.getGameBySlug(slug)`. A facade over many entities keeps it: `catalog.getGameBySlug(slug)`
+- `require*` is a guard that returns nothing; a read that throws when absent is `getRequired*`
 - `Dto` suffix for inter-layer carriers; `Request`/`Response` for HTTP bodies. Endpoint scope lives in the package.
 - `Spec` suffix for transient creation payloads passed to `service.create(...)`. `Config` suffix for developer-supplied
   JSON blobs persisted on an entity (JSONB column).
