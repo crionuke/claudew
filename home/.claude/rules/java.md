@@ -36,6 +36,8 @@ Java-specific rules.
 
 - `@AllArgsConstructor` + `private final` fields for constructor injection. No `@Inject` on fields
 - `@Slf4j` for logging with parameterized messages: `log.info("Message with value {}", value)`
+- When `log.warn`/`log.error` logs a caught exception, the exception's message must be part of the log line itself
+  (not only in the stack trace), so it stays greppable on its own.
 
 ## Quarkus
 
