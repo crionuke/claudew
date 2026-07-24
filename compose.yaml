@@ -17,7 +17,7 @@ x-worker: &worker
     resources:
       limits:
         cpus: "1"
-        memory: 3g
+        memory: 2g
   env_file:
     - .env
   extra_hosts:
