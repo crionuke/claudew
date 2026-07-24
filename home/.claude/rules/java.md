@@ -32,12 +32,15 @@ Java-specific rules.
 - `final var` for local variables, `final` for method arguments and class fields
 - Java Stream API over `for`/`while` loops for collection iteration and transformation
 
+### Logging
+
+- When logging a caught exception via `log.warn`/`log.error`, put its message in the log line, not just the stack
+  trace, so it stays greppable.
+
 ## Lombok
 
 - `@AllArgsConstructor` + `private final` fields for constructor injection. No `@Inject` on fields
 - `@Slf4j` for logging with parameterized messages: `log.info("Message with value {}", value)`
-- When `log.warn`/`log.error` logs a caught exception, the exception's message must be part of the log line itself
-  (not only in the stack trace), so it stays greppable on its own.
 
 ## Quarkus
 
